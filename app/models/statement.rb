@@ -5,4 +5,7 @@ class Statement < ApplicationRecord
 
   # validations
   validates :user, presence: true
+
+  # scopes
+  scope :by_user, ->(user) { where(user:) }
 end
