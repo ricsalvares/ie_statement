@@ -260,6 +260,8 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     ruby2_keywords (0.0.5)
+    shoulda-matchers (6.0.0)
+      activesupport (>= 5.2.0)
     slop (3.6.0)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
@@ -323,6 +325,7 @@ DEPENDENCIES
   rspec-mocks!
   rspec-rails!
   rspec-support!
+  shoulda-matchers (~> 6.0)
   sprockets-rails
   sqlite3 (~> 1.4)
   stimulus-rails
