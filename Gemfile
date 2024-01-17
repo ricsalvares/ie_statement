@@ -66,3 +66,7 @@ group :development do
   # gem "spring"
 end
 
+
+gem "devise", "~> 4.9"
+
+gem "factory_bot", "~> 6.4"
