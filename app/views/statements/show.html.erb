@@ -1,0 +1,8 @@
+<div>
+  <h2> 
+    <%= "#{current_user.email} statment ##{@statement.id}" %>
+  </h2>
+<div>
+
+<%= link_to 'Back', root_path %>
+<%= button_to "Delete", @statement, method: :delete, class: 'btn btn-danger',  form: { data: { turbo_confirm: "Are you sure?" }} %>

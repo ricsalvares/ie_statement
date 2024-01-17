@@ -1,8 +1,22 @@
 <div>
   <h1> Hello <%= current_user.email %></h1>
 
+  <%= link_to 'New statement', new_statement_path %>
+
   <% if @statements.size == 0 %>
   <h2> You have no statements to check! </h2>
   <% else %>
+
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Created at</th>
+    </tr>
+    <% @statements.each do |statement| %>
+      <tr> 
+        <td><%= link_to statement.id, statement_path(statement) %></td>
+        <td><%= statement.created_at %></td>
+      </tr>
+    <% end %>
   <% end %>
 <div/>

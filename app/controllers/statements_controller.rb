@@ -5,17 +5,41 @@ class StatementsController < ApplicationController
     @statements = Statement.by_user(current_user)
   end
 
-  def show; end
+  def show
+    @statement = Statement.by_user(current_user).find(params[:id])
+  end
 
-  def new; end
+  def new
+    @statement = Statement.new
+  end
 
   def edit; end
 
-  def create; end
+  def create
+    @statement = Services::CreateStatement.new(user: current_user).call
+
+    respond_to do |format|
+      if @statement.persisted?
+        format.html do
+          redirect_to statement_path(@statement), notice: 'Statement has been successfully created.'
+        end
+      else
+        format.html { render :new, status: :unprocessable_entity }
+      end
+    end
+  end
 
   def update; end
 
-  def destroy; end
+  def destroy
+    statement = Statement.by_user(current_user).find(params[:id])
+    statement.destroy!
+    respond_to do |format|
+      format.html do
+        redirect_to statements_path, notice: 'Statement has been successfully created.'
+      end
+    end
+  end
 
   private
 

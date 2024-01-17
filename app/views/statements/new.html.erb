@@ -1,0 +1,25 @@
+<div >
+  <h1 >New Statement</h1>
+
+  <% if @statement.errors.any? %>
+    <div>
+      <h2> Something went wrong, please check the following items: </h2>
+
+      <ul>
+        <% @statement.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form_with(model: @statement) do |f| %>
+    <%= f.button :submit %>
+  <% end %>
+
+  <br>
+
+  <div>
+    <%= link_to "Cancel", :back %>
+  <div>
+</div>
