@@ -35,7 +35,7 @@ RSpec.describe Services::CreateStatement do
         expect(::Services::CalculateDisposableIncome).to receive(:new).and_call_original
         expect_any_instance_of(::Services::CalculateDisposableIncome).to receive(:call).and_call_original
 
-        expect(::Services::CalculateIeRating).to receive(:new).with(1_230_000, 5000_00).and_call_original
+        expect(::Services::CalculateIeRating).to receive(:new).with(1_230_000, 500_000).and_call_original
         expect_any_instance_of(::Services::CalculateIeRating).to receive(:call).and_call_original
 
         subject

@@ -1,5 +1,5 @@
 <div >
-  <h1 >New Statement</h1>
+  <h1 >Edit Statement</h1>
 
   <% if @statement.errors.any? %>
     <div>
@@ -21,7 +21,7 @@
   
     <%= form_with(model: @statement, class: "row gy-2 gx-3 align-items-center form-inline") do |f| %>
       <div id ="statement_items_form">
-        <%= f.fields_for :statement_items do |si| %>
+        <%= f.fields_for :statement_items, @statement.statement_items do |si| %>
           <div class="row statement_items">
             <%= si.hidden_field :id %>
             <div class="col-md-4">
@@ -30,7 +30,7 @@
             </div>
             <div class="col-md-3">
               <%= si.label :amount_pennies, "Amount", class: "form-label"  %>
-              <%= si.number_field :amount_pennies, step: 0.01, class: "form-control" %>
+              <%= si.number_field :amount_pennies, step: 0.01, value: si.object.amount_pennies.fdiv(100), class: "form-control" %>
             </div>
             <div class="col-md-3">
               <%= si.label :statement_type, "Type", class: "form-label"  %>

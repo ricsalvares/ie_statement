@@ -8,6 +8,9 @@
 <br>
 
 <div class="container">
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <%= button_to "Delete", @statement, method: :delete, class: 'btn btn-danger',  form: { data: { turbo_confirm: "Are you sure?" }} %>
+  </div>
   <div class="row">
     <div class="col-md-">
       <p><strong>Statment #<%= @statement.id %> </strong></p>
@@ -47,13 +50,8 @@
   </tbody>
 </table>
 
-<div class="grid">
-  <div class="row">
-    <div class="col-md-1">
-      <%= link_to 'Back', root_path, class: "btn btn-primary" %>
-    </div>
-    <div class="col-md-1">
-      <%= button_to "Delete", @statement, method: :delete, class: 'btn btn-danger',  form: { data: { turbo_confirm: "Are you sure?" }} %>
-    </div>
-  </div>
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+  <%= link_to "Edit", edit_statement_path(@statement), class: 'btn btn-primary'%>
+  <%= link_to 'Back', root_path, class: "btn btn-primary" %>
 </div>
+

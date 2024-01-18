@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const ref = document.querySelector('#statement_items_form .statement_items')
     let node = ref.cloneNode(true);
-
     const newIndex = document.querySelectorAll('.statement_items').length;
 
     node.querySelectorAll('input, select, label').forEach(function(el) {

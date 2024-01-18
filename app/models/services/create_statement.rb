@@ -2,6 +2,7 @@
 
 module Services
   class CreateStatementError < StandardError; end
+
   class CreateStatement
     def initialize(user:, items: [])
       @user = user
@@ -15,8 +16,8 @@ module Services
         after_save
         statement.reload
       end
-    rescue ActiveRecord::RecordInvalid => e
-      # TODO handle errors properly
+    rescue ActiveRecord::RecordInvalid
+      # TODO: handle errors properly
       statement
     end
 
@@ -34,13 +35,13 @@ module Services
     def update_disposable_income_and_ie_rating
       disposable_income = calculate_disposable_income[:disposable_income]
       ie_rating = calculate_ie_rating(calculate_disposable_income)
-      statement.update(disposable_income_pennies: disposable_income, ie_rating: ie_rating)
+      statement.update(disposable_income_pennies: disposable_income, ie_rating:)
     end
 
     def calculate_disposable_income
       @calculate_disposable_income ||= CalculateDisposableIncome.new(statement).call
     end
-    
+
     def calculate_ie_rating(params)
       CalculateIeRating.new(params[:income_sum], params[:expenditure_sum]).call
     end
@@ -65,7 +66,7 @@ module Services
       {
         name: item[:name],
         statement_type: item[:statement_type].to_i,
-        amount_pennies: item.fetch(:amount_pennies, 0).to_f * 100 #converts into pennies
+        amount_pennies: item.fetch(:amount_pennies, 0).to_f * 100 # converts into pennies
       }
     end
   end

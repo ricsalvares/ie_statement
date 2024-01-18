@@ -35,7 +35,7 @@ RSpec.describe 'Statements', type: :request do
         get statement_path(statement)
 
         expect(response.status).to eq(200)
-        expect(response.body).to include("#{user.email}")
+        expect(response.body).to include(user.email.to_s)
         expect(response.body).to include("Statment ##{statement.id}")
       end
     end
@@ -63,6 +63,8 @@ RSpec.describe 'Statements', type: :request do
             }
           }
         }
+
+        expect_any_instance_of(::Services::CreateStatement).to receive(:call).and_call_original
         expect do
           post(statements_path, params:)
         end
@@ -77,6 +79,43 @@ RSpec.describe 'Statements', type: :request do
           post(statements_path, params: {})
         end.not_to change(Statement, :count)
 
+        expect(response.status).to eq(302)
+      end
+    end
+  end
+
+  describe 'PUT statement' do
+    context 'when successfully signed in' do
+      let(:statement) { create(:statement, :with_statement_item, user:) }
+      let(:user) { create(:user) }
+
+      before { sign_in user }
+
+      it 'updates a statement' do
+        item = statement.statement_items.last
+        params = {
+          statement: {
+            statement_items_attributes: {
+              '0' => { 'name' => 'updated item',
+                       'amount_pennies' => '234.52',
+                       'statement_type' => '0',
+                       'id' => item.id,
+                       '_destroy' => '' }
+            }
+          }
+        }
+
+        expect_any_instance_of(::Services::UpdateStatement).to receive(:call).and_call_original
+        put(statement_path(statement.id), params:)
+        expect(response.status).to eq(302)
+
+        expect(item.reload.name).to eq('updated item')
+      end
+    end
+
+    context 'when not logged in' do
+      it 'does not do anything' do
+        put statement_path(1), params: {}
         expect(response.status).to eq(302)
       end
     end
