@@ -55,8 +55,15 @@ RSpec.describe 'Statements', type: :request do
       before { sign_in user }
 
       it 'creates a statement' do
+        params = {
+          statement: {
+            statement_items_attributes: {
+              '0' => { name: 'salary', amount_pennies: 40_102, statement_type: 1 }
+            }
+          }
+        }
         expect do
-          post(statements_path, params: {})
+          post(statements_path, params:)
         end
         .to change(Statement, :count).by(1)
         expect(response.status).to eq(302)

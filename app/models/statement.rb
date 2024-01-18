@@ -2,7 +2,8 @@
 
 class Statement < ApplicationRecord
   belongs_to :user
-
+  has_many :statement_items
+  accepts_nested_attributes_for :statement_items
   # validations
   validates :user, presence: true
 

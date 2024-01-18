@@ -11,12 +11,13 @@ class StatementsController < ApplicationController
 
   def new
     @statement = Statement.new
+    @statement.statement_items.build
   end
 
   def edit; end
 
   def create
-    @statement = Services::CreateStatement.new(user: current_user).call
+    @statement = Services::CreateStatement.new(user: current_user, items: items_params).call
 
     respond_to do |format|
       if @statement.persisted?
@@ -43,7 +44,16 @@ class StatementsController < ApplicationController
 
   private
 
+  def items_params
+    statement_params[:statement_items_attributes]
+      .to_h
+      .with_indifferent_access
+      .map { |_, i| i }
+  end
+
   def statement_params
-    params.require(:statement).permit
+    params
+      .require(:statement)
+      .permit(statement_items_attributes: %i[name amount_pennies statement_type])
   end
 end
