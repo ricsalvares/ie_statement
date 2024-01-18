@@ -1,22 +1,32 @@
-<div>
-  <h1> Hello <%= current_user.email %></h1>
+<div class="grid">
 
-  <%= link_to 'New statement', new_statement_path %>
+<h2> Hello <%= current_user.email %></h2>
+<br>
 
-  <% if @statements.size == 0 %>
-  <h2> You have no statements to check! </h2>
-  <% else %>
+<div class="container">
+  <%= link_to 'New statement', new_statement_path, class: "btn btn-primary" %>
+    <% if @statements.size == 0 %>
+      <h2> You have no statements to check! </h2>
+    <% else %>
 
-  <table>
-    <tr>
-      <th>Id</th>
-      <th>Created at</th>
-    </tr>
-    <% @statements.each do |statement| %>
-      <tr> 
-        <td><%= link_to statement.id, statement_path(statement) %></td>
-        <td><%= statement.created_at %></td>
-      </tr>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Created at</th>
+            <th scope="col">Created by</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @statements.each do |statement| %>
+          <tr> 
+            <td><%= link_to statement.id, statement_path(statement) %></td>
+            <td><%= statement.created_at.strftime("%d/%m/%Y %H:%M") %> </td>
+            <td><%= current_user.email%> </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
     <% end %>
-  <% end %>
+  <div/>
 <div/>

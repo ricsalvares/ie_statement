@@ -37,7 +37,7 @@ class StatementsController < ApplicationController
     statement.destroy!
     respond_to do |format|
       format.html do
-        redirect_to statements_path, notice: 'Statement has been successfully created.'
+        redirect_to statements_path, notice: 'Statement has been successfully destroyed.'
       end
     end
   end

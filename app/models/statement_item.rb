@@ -6,6 +6,7 @@ class StatementItem < ApplicationRecord
   # validations
   validates :statement, presence: true
   validates :statement_type, presence: true
+  validates :name, presence: true
 
   # scopes
   # scope :by_user, ->(user) { where(user:) }

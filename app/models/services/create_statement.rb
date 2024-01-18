@@ -17,7 +17,6 @@ module Services
       end
     rescue ActiveRecord::RecordInvalid => e
       # TODO handle errors properly
-    ensure
       statement
     end
 

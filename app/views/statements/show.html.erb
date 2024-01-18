@@ -1,8 +1,59 @@
-<div>
-  <h2> 
-    <%= "#{current_user.email} statment ##{@statement.id}" %>
-  </h2>
-<div>
+<div class="container">
+  <div class="row">
+    <p class="h2">  <%= current_user.email %></p>
+  </div>
+</div>
 
-<%= link_to 'Back', root_path %>
-<%= button_to "Delete", @statement, method: :delete, class: 'btn btn-danger',  form: { data: { turbo_confirm: "Are you sure?" }} %>
+<br>
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-">
+      <p><strong>Statment #<%= @statement.id %> </strong></p>
+    </div>
+
+    <div class="col-md-">
+      <p><strong>Disposable Income(£): <%= @statement.disposable_income_pennies&.fdiv(100) %> </strong></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-">
+      <p><strong>Rating:</strong>
+        <span class="badge text-bg-primary"><%= @statement.ie_rating %></span>
+      </p>
+  </div>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Amount(£)</th>
+      <th scope="col">Type</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @statement.statement_items.each do |item| %> 
+    <tr>
+      <td><%= item.id %> </td>
+      <td><%= item.name %> </td>
+      <td><%= item.amount_pennies.fdiv(100) %> </td>
+      <td><%= item.statement_type %> </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<div class="grid">
+  <div class="row">
+    <div class="col-md-1">
+      <%= link_to 'Back', root_path, class: "btn btn-primary" %>
+    </div>
+    <div class="col-md-1">
+      <%= button_to "Delete", @statement, method: :delete, class: 'btn btn-danger',  form: { data: { turbo_confirm: "Are you sure?" }} %>
+    </div>
+  </div>
+</div>

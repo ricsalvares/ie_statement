@@ -12,25 +12,36 @@
       </ul>
     </div>
   <% end %>
-
-  <%= form_with(model: @statement) do |f| %>
-
-    <div id='statement_items'>
+  <div class="container">
+    <%= link_to "Add more items", '#', id: "add_statement_items",class: "btn btn-primary" %>
+    <br>
+    <br>
+  
+    <%= form_with(model: @statement, class: "row gy-2 gx-3 align-items-center form-inline") do |f| %>
       <%= f.fields_for :statement_items  do |si| %>
-        <% si.hidden_field :id %>
-        <%= si.label :name %>
-        <%= si.text_field :name %>
-        <%= si.label :amount_pennies %>
-        <%= si.number_field :amount_pennies %>
-        <%= si.label :statement_type %>
-        <%= si.select :statement_type, [['expenditure', 0], ['income', 1]]  %>
+        <div class="row">
+          <% si.hidden_field :id %>
+          <div class="col-md-4">
+            <%= si.label :name, class: "form-label" %>
+            <%= si.text_field :name, class: "form-control" %>
+          </div>
+          <div class="col-md-4">
+            <%= si.label :amount_pennies, class: "form-label"  %>
+            <%= si.number_field :amount_pennies, step: 0.01, class: "form-control" %>
+          </div>
+          <div class="col-md-4">
+            <%= si.label :statement_type, class: "form-label"  %>
+            <%= si.select :statement_type, [['expenditure', 0], ['income', 1]], {}, class: "form-select" %>
+          </div>
+        </div>
       <% end %>
-    </div>
-    <%= f.button :submit %>
-    <% end %>
-  <br>
 
-  <div>
-    <%= link_to "Cancel", :back %>
-  <div>
+      <div class="col-12">
+        <%= f.button :submit, class: "btn btn-success" %>
+        <%= link_to "Cancel", root_path, class: "btn btn-danger" %>
+      </div>
+    <% end %>
+  </div>
 </div>
+
+<%= javascript_include_tag 'statement' %>

@@ -35,7 +35,8 @@ RSpec.describe 'Statements', type: :request do
         get statement_path(statement)
 
         expect(response.status).to eq(200)
-        expect(response.body).to include("#{user.email} statment ##{statement.id}")
+        expect(response.body).to include("#{user.email}")
+        expect(response.body).to include("Statment ##{statement.id}")
       end
     end
 
