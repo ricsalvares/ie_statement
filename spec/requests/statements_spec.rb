@@ -2,6 +2,7 @@
 
 require 'rails_helper'
 
+# ruboocop:disable Metrics/BlockLength
 RSpec.describe 'Statements', type: :request do
   describe 'GET /index' do
     context 'when successfully signed in' do
@@ -50,6 +51,7 @@ RSpec.describe 'Statements', type: :request do
     end
   end
 
+  # ruboocop:disable Metrics/BlockLength
   describe 'POST statement' do
     context 'when successfully signed in' do
       let(:user) { create(:user) }
@@ -83,6 +85,7 @@ RSpec.describe 'Statements', type: :request do
       end
     end
   end
+  # ruboocop:enable Metrics/BlockLength
 
   describe 'PUT statement' do
     context 'when successfully signed in' do
@@ -148,3 +151,4 @@ RSpec.describe 'Statements', type: :request do
     end
   end
 end
+# ruboocop:enable Metrics/BlockLength
