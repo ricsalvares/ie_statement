@@ -1,13 +1,14 @@
 <div >
   <h1 >New Statement</h1>
 
+  <br>
+  <br>
   <% if @statement.errors.any? %>
-    <div>
-      <h2> Something went wrong, please check the following items: </h2>
-      
-      <ul>
+    <div class="container">
+      <p> Something went wrong, please check the following items: </p>
+      <ul class="list-group">
         <% @statement.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+          <li class="list-group-item list-group-item-danger"><%= error.full_message %></li>
         <% end %>
       </ul>
     </div>
@@ -19,34 +20,6 @@
     <br>
     <br>
   
-    <%= form_with(model: @statement, class: "row gy-2 gx-3 align-items-center form-inline") do |f| %>
-      <div id ="statement_items_form">
-        <%= f.fields_for :statement_items do |si| %>
-          <div class="row statement_items">
-            <%= si.hidden_field :id %>
-            <div class="col-md-4">
-              <%= si.label :name, class: "form-label" %>
-              <%= si.text_field :name, class: "form-control" %>
-            </div>
-            <div class="col-md-3">
-              <%= si.label :amount_pennies, "Amount", class: "form-label"  %>
-              <%= si.number_field :amount_pennies, step: 0.01, class: "form-control" %>
-            </div>
-            <div class="col-md-3">
-              <%= si.label :statement_type, "Type", class: "form-label"  %>
-              <%= si.select :statement_type, [['expenditure', 0], ['income', 1]], {}, class: "form-select" %>
-            </div>
-            <div class="col-md-2">
-              <%= si.label :destroy, "Delete?", class: "form-label"  %>
-              <%= si.select :_destroy, [['', ''], ['delete', 1]], {}, class: "form-select" %>
-            </div>
-          </div>
-        <% end %>
-      </div>
-      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <%= f.button :submit, class: "btn btn-success" %>
-        <%= link_to "Cancel", root_path, class: "btn btn-primary" %>
-      </div>
-    <% end %>
+    <%= render "form", statement: @statement, statement_items: @statement.statement_items.build %>
   </div>
 </div>

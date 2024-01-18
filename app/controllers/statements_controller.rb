@@ -32,6 +32,7 @@ class StatementsController < ApplicationController
 
   def update
     @statement = Services::UpdateStatement.new(statement: @statement, user: current_user, items: items_params).call
+
     respond_to do |format|
       if @statement.errors.empty?
         format.html do

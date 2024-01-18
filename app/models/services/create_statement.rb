@@ -57,7 +57,7 @@ module Services
     end
 
     def build_items
-      items.each do |item|
+      items.reject { |i| i[:_destroy] == '1' }.each do |item|
         statement.statement_items.build(**param_by_item(item))
       end
     end

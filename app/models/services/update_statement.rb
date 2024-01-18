@@ -15,6 +15,9 @@ module Services
 
       update_statement_ratings
       statement.reload
+    rescue ActiveRecord::RecordInvalid => e
+      statement.errors.add(:statement_item, e)
+      statement
     end
 
     private
@@ -48,7 +51,7 @@ module Services
       statement_items = StatementItem.where(statement_id: statement.id, id: items_to_be_updated.keys).index_by(&:id)
       statement_items.each do |id, statement_item|
         params = param_by_item(items_to_be_updated[id].with_indifferent_access)
-        statement_item.update(**params)
+        statement_item.update!(**params)
       end
     end
 

@@ -7,9 +7,7 @@ class StatementItem < ApplicationRecord
   validates :statement, presence: true
   validates :statement_type, presence: true
   validates :name, presence: true
-
-  # scopes
-  # scope :by_user, ->(user) { where(user:) }
+  validates :amount_pennies, presence: true
 
   enum statement_type: {
     expenditure: 0,

@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-# ruboocop:disable Metrics/BlockLength
+# rubocop:disable  Metrics/BlockLength
 RSpec.describe 'Statements', type: :request do
   describe 'GET /index' do
     context 'when successfully signed in' do
@@ -51,7 +51,6 @@ RSpec.describe 'Statements', type: :request do
     end
   end
 
-  # ruboocop:disable Metrics/BlockLength
   describe 'POST statement' do
     context 'when successfully signed in' do
       let(:user) { create(:user) }
@@ -85,7 +84,6 @@ RSpec.describe 'Statements', type: :request do
       end
     end
   end
-  # ruboocop:enable Metrics/BlockLength
 
   describe 'PUT statement' do
     context 'when successfully signed in' do
@@ -113,6 +111,30 @@ RSpec.describe 'Statements', type: :request do
         expect(response.status).to eq(302)
 
         expect(item.reload.name).to eq('updated item')
+      end
+
+      context 'when the params are not valid' do
+        it do
+          item = statement.statement_items.last
+          params = {
+            statement: {
+              statement_items_attributes: {
+                '0' => {
+                  'amount_pennies' => '234.52',
+                  'statement_type' => '0',
+                  'id' => item.id,
+                  '_destroy' => ''
+                }
+              }
+            }
+          }
+
+          expect_any_instance_of(::Services::UpdateStatement).to receive(:call).and_call_original
+          put(statement_path(statement.id), params:)
+          expect(response.status).to eq(422)
+
+          expect(item.reload.name).not_to eq('updated item')
+        end
       end
     end
 
@@ -151,4 +173,4 @@ RSpec.describe 'Statements', type: :request do
     end
   end
 end
-# ruboocop:enable Metrics/BlockLength
+# rubocop:enable  Metrics/BlockLength

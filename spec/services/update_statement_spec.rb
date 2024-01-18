@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-
+# rubocop:disable  Metrics/BlockLength
 RSpec.describe Services::UpdateStatement do
   subject { described_class.new(**params).call }
   let(:params) do
@@ -60,3 +60,4 @@ RSpec.describe Services::UpdateStatement do
     pending 'Missing specs to cover when it fails'
   end
 end
+# rubocop:enable  Metrics/BlockLength

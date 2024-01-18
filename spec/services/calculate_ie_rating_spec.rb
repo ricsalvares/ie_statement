@@ -2,6 +2,7 @@
 
 require 'rails_helper'
 
+# rubocop:disable  Metrics/BlockLength
 RSpec.describe Services::CalculateIeRating do
   subject { described_class.new(income_amount_pennies, expenditure_amount_pennies).call }
 
@@ -43,3 +44,4 @@ RSpec.describe Services::CalculateIeRating do
     end
   end
 end
+# rubocop:enable  Metrics/BlockLength

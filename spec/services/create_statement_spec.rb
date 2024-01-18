@@ -2,6 +2,7 @@
 
 require 'rails_helper'
 
+# rubocop:disable  Metrics/BlockLength
 RSpec.describe Services::CreateStatement do
   subject { described_class.new(**params).call }
   let(:params) do
@@ -11,12 +12,23 @@ RSpec.describe Services::CreateStatement do
         {
           'name': 'Found on the ground',
           'statement_type': 1,
-          'amount_pennies': '12300'
+          'amount_pennies': '12300',
+          'id': '',
+          '_destroy': ''
         },
         {
           'name': 'pay back borrowed money',
           'statement_type': 0,
-          'amount_pennies': '5000'
+          'amount_pennies': '5000',
+          'id': '',
+          '_destroy': ''
+        },
+        {
+          'name': 'will be ignored',
+          'statement_type': 0,
+          'amount_pennies': '5000',
+          'id': '',
+          '_destroy': '1'
         }
       ]
     }
@@ -51,3 +63,4 @@ RSpec.describe Services::CreateStatement do
     end
   end
 end
+# rubocop:enable  Metrics/BlockLength

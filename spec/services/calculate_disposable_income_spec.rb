@@ -2,9 +2,9 @@
 
 require 'rails_helper'
 
+# rubocop:disable  Metrics/BlockLength
 RSpec.describe Services::CalculateDisposableIncome do
   subject { described_class.new(statement).call }
-
   context 'call' do
     let(:income_statement_items) do
       [
@@ -60,4 +60,5 @@ RSpec.describe Services::CalculateDisposableIncome do
                         })
     end
   end
+  # rubocop:enable  Metrics/BlockLength
 end

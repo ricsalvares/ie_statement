@@ -4,9 +4,9 @@ class CreateStatementItems < ActiveRecord::Migration[7.1]
   def change
     create_table :statement_items do |t|
       t.references :statement, null: false, foreign_key: true
-      t.string :name
+      t.string :name, null: false
       t.integer :statement_type, null: false
-      t.integer :amount_pennies
+      t.integer :amount_pennies, null: false, default: 0
 
       t.timestamps
     end
