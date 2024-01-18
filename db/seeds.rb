@@ -16,22 +16,22 @@ items = [
   {
     'name': 'Salary',
     'statement_type': 1,
-    'amount': 12_300
+    'amount_pennies': 12_300
   },
   {
     'name': 'Found on the ground',
     'statement_type': 1,
-    'amount': 100
+    'amount_pennies': 100
   },
   {
     'name': 'pay back borrowed money',
     'statement_type': 0,
-    'amount': 15
+    'amount_pennies': 15
   },
   {
     'name': 'Groceries',
     'statement_type': 0,
-    'amount': 123.94
+    'amount_pennies': 123.94
   }
 ]
 ::Services::CreateStatement.new(user: user, items: items).call

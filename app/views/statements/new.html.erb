@@ -18,24 +18,25 @@
     <br>
   
     <%= form_with(model: @statement, class: "row gy-2 gx-3 align-items-center form-inline") do |f| %>
-      <%= f.fields_for :statement_items  do |si| %>
-        <div class="row">
-          <% si.hidden_field :id %>
-          <div class="col-md-4">
-            <%= si.label :name, class: "form-label" %>
-            <%= si.text_field :name, class: "form-control" %>
+      <div id ="statement_items_form">
+        <%= f.fields_for :statement_items do |si| %>
+          <div class="row statement_items">
+            <% si.hidden_field :id %>
+            <div class="col-md-4">
+              <%= si.label :name, class: "form-label" %>
+              <%= si.text_field :name, class: "form-control" %>
+            </div>
+            <div class="col-md-4">
+              <%= si.label :amount_pennies, "Amount", class: "form-label"  %>
+              <%= si.number_field :amount_pennies, step: 0.01, class: "form-control" %>
+            </div>
+            <div class="col-md-4">
+              <%= si.label :statement_type, "Type", class: "form-label"  %>
+              <%= si.select :statement_type, [['expenditure', 0], ['income', 1]], {}, class: "form-select" %>
+            </div>
           </div>
-          <div class="col-md-4">
-            <%= si.label :amount_pennies, class: "form-label"  %>
-            <%= si.number_field :amount_pennies, step: 0.01, class: "form-control" %>
-          </div>
-          <div class="col-md-4">
-            <%= si.label :statement_type, class: "form-label"  %>
-            <%= si.select :statement_type, [['expenditure', 0], ['income', 1]], {}, class: "form-select" %>
-          </div>
-        </div>
-      <% end %>
-
+        <% end %>
+      </div>
       <div class="col-12">
         <%= f.button :submit, class: "btn btn-success" %>
         <%= link_to "Cancel", root_path, class: "btn btn-danger" %>

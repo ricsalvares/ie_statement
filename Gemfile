@@ -72,7 +72,7 @@ group :development do
 end
 
 gem 'devise', '~> 4.9'
-
 gem 'factory_bot_rails', '~> 6.4'
-
 gem 'faker', '~> 3.2'
+gem 'bootstrap', '~> 5.3.2'
+gem 'dartsass-sprockets'

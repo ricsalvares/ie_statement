@@ -65,7 +65,7 @@ module Services
       {
         name: item[:name],
         statement_type: item[:statement_type].to_i,
-        amount_pennies: item.fetch(:amount, 0) * 100 #converts into pennies
+        amount_pennies: item.fetch(:amount_pennies, 0).to_f * 100 #converts into pennies
       }
     end
   end
