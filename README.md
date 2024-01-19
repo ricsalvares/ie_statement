@@ -60,8 +60,12 @@ As pointed previously, I've opted to use full amount of pennies to handle with m
 #### Authentication
 I used `devise` to managed it, by just following the "get started" steps, this could be revisited in order to be configured properly.
 
+#### Useless files/ not being used
+Some files are useless for this projects, they have been created as rails boiler plate.
+
 ## Disclaimer
 - Perhaps there are more things to be improved, especially related (but not limited) to the UI but those above are those I think would have priority to be attacked.
 - All the commits were pushed to `main` just because it's a simple exercise, in a real world situation I don't do it.
+
 
 
