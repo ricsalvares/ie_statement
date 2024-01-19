@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 module Services
-  class CreateStatementError < StandardError; end
-
   class CreateStatement
+    include ::Services::Concerns::ParamByItem
+
     def initialize(user:, items: [])
       @user = user
       @items = items
@@ -60,14 +60,6 @@ module Services
       items.reject { |i| i[:_destroy] == '1' }.each do |item|
         statement.statement_items.build(**param_by_item(item))
       end
-    end
-
-    def param_by_item(item)
-      {
-        name: item[:name],
-        statement_type: item[:statement_type].to_i,
-        amount_pennies: item.fetch(:amount_pennies, 0).to_f * 100 # converts into pennies
-      }
     end
   end
 end

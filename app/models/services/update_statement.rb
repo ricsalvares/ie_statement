@@ -2,6 +2,8 @@
 
 module Services
   class UpdateStatement
+    include ::Services::Concerns::ParamByItem
+
     def initialize(statement:, user:, items: [])
       @user = user
       @items = items
@@ -74,14 +76,6 @@ module Services
 
     def items_to_be_created
       items.select { |item| item['_destroy'] != '1' && !item['id'].present? }
-    end
-
-    def param_by_item(item)
-      {
-        name: item[:name],
-        statement_type: item[:statement_type].to_i,
-        amount_pennies: item.fetch(:amount_pennies, 0).to_f * 100 # converts into pennies
-      }
     end
   end
 end
