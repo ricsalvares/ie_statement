@@ -9,7 +9,8 @@ This application was created using ruby `3.2.2`, `rails 7.1.3` and the default `
 By running `rails server` and accessing `http://localhost:3000/` you'll be able to check the application on your browser.
 To login you can use the sample created user (password: `12341234`, email: `test@test.mail.com`)
 
-The project uses rubocop to ensure a pattern of code. To check it you can run rubocop (no offense should be displayed)
+The project uses rubocop to ensure a code standard. To check it you can run `rubocop` (no offense should be displayed). 
+Still related to quality, the gem `simplecov` takes place to ensure a high level of coverage for specs, it can be checked by running `open coverage/index.html` AFTER running all the specs.
 
 To run the automated test you might need to run `bundle exec rspec`, I quite sure `bundle exec` is required due to [this](https://github.com/ricsalvares/ie_statement/blob/main/Gemfile#L56) definition on the gem file.
 
@@ -49,10 +50,10 @@ For both update and create records sometimes I use `statement.statement_items.bu
 I think it is self-explanatory, specificaly speaking about how to delete `statement_items`. The dropdown wasn't the best choice, but it saved me time. A link (with icon, perhaps) to mark the items to be deleted AND hide them from the UI would improve the User experience a lot.
 
 #### View files
-Perhaps the files related to the views could be refactored in order to avoid DRY and surely improve the readability and maintanability.
+Perhaps the files related to the views could be refactored in order to avoid DRY and, surely, improve their readability and maintanability level.
 
-#### Specs and coverage
-Fot most services/models I used TDD and, therefore the specs are indispensable, however most time I've thought on the happy paths and even when I did something considering some failures scenarios I didn't go further on that. That's why I point it as a thing to be improved. To be honest I didn't check the coverage of specs, but again, a thing to be improved.
+#### Specs
+Fot most services/models I used TDD and, therefore the specs are indispensable, however most time I've thought on the happy paths and even when I did something considering some failures scenarios I didn't go further on that. That's why I point it as a thing to be improved.
 
 #### Use of a specific gem to manage the value in pennies properly
 As pointed previously, I've opted to use full amount of pennies to handle with moneys values (`disposable_income_pennies`, `amount_pennies`), which honestly took some effort to handle it, by adding a specific gem could save time and avoid some manual treatment for it (such as `fdiv` calls throught the code).
