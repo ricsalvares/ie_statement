@@ -4,15 +4,19 @@ This is a practical exercise for Ophelos, the goal is to have a simple I&E stata
 
 
 ## How to run
-This application was created using ruby `3.2.2`, `rails 7.1.3` and the default `sqlite` installed along with rais, after cloning the project and installing them, you can run `rails db:setup` to create the database and run the seeds with a simple sample data.
+This application was created using ruby `3.2.2`, `rails 7.1.3` and the default `sqlite` installed along with rais, after cloning the project and installing them, you can run the following to create the database and run the seeds with a simple sample data.
+```ruby
+bundle install
+rails db:setup
+```
 
-By running `rails server` and accessing `http://localhost:3000/` you'll be able to check the application on your browser.
-To login you can use the sample created user (password: `12341234`, email: `test@test.mail.com`)
+By running `rails server` the server will run by default on port 3000, and you can check it by accessing `http://localhost:3000/` on your browser.
+To login you can use the sample created user (password: `12341234`, email: `test@test.com`)
 
-The project uses rubocop to ensure a code standard. To check it you can run `rubocop` (no offense should be displayed). 
+The project uses `rubocop` to ensure a code standard. To check it you can run `rubocop` (no offense should be displayed).
 Still related to quality, the gem `simplecov` takes place to ensure a high level of coverage for specs, it can be checked by running `open coverage/index.html` AFTER running all the specs.
 
-To run the automated test you might need to run `bundle exec rspec`, I quite sure `bundle exec` is required due to [this](https://github.com/ricsalvares/ie_statement/blob/main/Gemfile#L56) definition on the gem file.
+To run the automated test you might need to run `bundle exec rspec` instead of just `rspec`, I am quite sure `bundle exec` is required due to [this](https://github.com/ricsalvares/ie_statement/blob/main/Gemfile#L56) definition on the gem file (check "To be improved" section).
 
 ## Project
 The idea behind was to create isolated services to handle specific operations, trying to let them as much decoupled as possible. There are some tradeoffs though, among them is the decision of not using some rails built in functionalities such as validations and how the errors are handles/displayed (please check the "To be improved" section)
@@ -63,6 +67,9 @@ I used `devise` to managed it, by just following the "get started" steps, this c
 
 #### Useless files/ not being used
 Some files are useless for this projects, they have been created as rails boiler plate.
+
+#### Using docker
+To avoid any particular issue while running the project, it could be running on a docker container.
 
 ## Disclaimer
 - Perhaps there are more things to be improved, especially related (but not limited) to the UI but those above are those I think would have priority to be attacked.
