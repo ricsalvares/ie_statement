@@ -47,11 +47,11 @@ RSpec.describe Services::UpdateStatement do
       end
 
       it 'calls external services' do
-        expect(::Services::CalculateDisposableIncome).to receive(:new).and_call_original
-        expect_any_instance_of(::Services::CalculateDisposableIncome).to receive(:call).and_call_original
+        expect(Services::CalculateDisposableIncome).to receive(:new).and_call_original
+        expect_any_instance_of(Services::CalculateDisposableIncome).to receive(:call).and_call_original
 
-        expect(::Services::CalculateIeRating).to receive(:new).with(1_523_423, 23_452).and_call_original
-        expect_any_instance_of(::Services::CalculateIeRating).to receive(:call).and_call_original
+        expect(Services::CalculateIeRating).to receive(:new).with(1_523_423, 23_452).and_call_original
+        expect_any_instance_of(Services::CalculateIeRating).to receive(:call).and_call_original
 
         subject
       end

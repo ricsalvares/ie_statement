@@ -15,24 +15,24 @@ user = User.create(email: 'test@test.com', password: '12341234')
 
 items = [
   {
-    'name': 'Salary',
-    'statement_type': 1,
-    'amount_pennies': 12_300
+    name: 'Salary',
+    statement_type: 1,
+    amount_pennies: 12_300
   },
   {
-    'name': 'Found on the ground',
-    'statement_type': 1,
-    'amount_pennies': 100
+    name: 'Found on the ground',
+    statement_type: 1,
+    amount_pennies: 100
   },
   {
-    'name': 'pay back borrowed money',
-    'statement_type': 0,
-    'amount_pennies': 15
+    name: 'pay back borrowed money',
+    statement_type: 0,
+    amount_pennies: 15
   },
   {
-    'name': 'Groceries',
-    'statement_type': 0,
-    'amount_pennies': 123.94
+    name: 'Groceries',
+    statement_type: 0,
+    amount_pennies: 123.94
   }
 ]
-::Services::CreateStatement.new(user:, items:).call
+Services::CreateStatement.new(user:, items:).call

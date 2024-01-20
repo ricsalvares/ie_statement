@@ -6,3 +6,4 @@ AllCops:
     - config/environments/development.rb
     - config/initializers/devise.rb
     - db/schema.rb
+  NewCops: enable

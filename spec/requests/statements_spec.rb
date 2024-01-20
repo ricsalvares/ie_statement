@@ -65,7 +65,7 @@ RSpec.describe 'Statements', type: :request do
           }
         }
 
-        expect_any_instance_of(::Services::CreateStatement).to receive(:call).and_call_original
+        expect_any_instance_of(Services::CreateStatement).to receive(:call).and_call_original
         expect do
           post(statements_path, params:)
         end
@@ -106,7 +106,7 @@ RSpec.describe 'Statements', type: :request do
           }
         }
 
-        expect_any_instance_of(::Services::UpdateStatement).to receive(:call).and_call_original
+        expect_any_instance_of(Services::UpdateStatement).to receive(:call).and_call_original
         put(statement_path(statement.id), params:)
         expect(response.status).to eq(302)
 
@@ -129,7 +129,7 @@ RSpec.describe 'Statements', type: :request do
             }
           }
 
-          expect_any_instance_of(::Services::UpdateStatement).to receive(:call).and_call_original
+          expect_any_instance_of(Services::UpdateStatement).to receive(:call).and_call_original
           put(statement_path(statement.id), params:)
           expect(response.status).to eq(422)
 
