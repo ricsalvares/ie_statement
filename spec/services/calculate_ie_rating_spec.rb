@@ -2,46 +2,25 @@
 
 require 'rails_helper'
 
-# rubocop:disable  Metrics/BlockLength
 RSpec.describe Services::CalculateIeRating do
   subject { described_class.new(income_amount_pennies, expenditure_amount_pennies).call }
 
-  context 'call' do
-    # TODO: use shared example + random values
-    context 'when calculated rating is A' do
-      let(:expenditure_amount_pennies) { 20_000 }
-      let(:income_amount_pennies) { 500_000 }
-
-      it { is_expected.to eq 'A' }
-    end
-
-    context 'when calculated rating is B' do
-      let(:expenditure_amount_pennies) { 200_000 }
-      let(:income_amount_pennies) { 700_000 }
-
-      it { is_expected.to eq 'B' }
-    end
-
-    context 'when calculated rating is C' do
-      let(:expenditure_amount_pennies) { 200_000 }
-      let(:income_amount_pennies) { 500_000 }
-
-      it { is_expected.to eq 'C' }
-    end
-
-    context 'when calculated rating is D' do
-      let(:expenditure_amount_pennies) { 400_000 }
-      let(:income_amount_pennies) { 700_000 }
-
-      it { is_expected.to eq 'D' }
-    end
-
-    context 'when income is zero' do
-      let(:expenditure_amount_pennies) { 400_000 }
-      let(:income_amount_pennies) { 0 }
-
-      it { is_expected.to eq 'D' }
+  shared_examples 'I&E rating calculator' do |income, expenditure, rating|
+    context "when income is #{income} and expenditure is #{expenditure}" do
+      let(:income_amount_pennies) { income }
+      let(:expenditure_amount_pennies) { expenditure }
+      it "returns the rating: #{rating}" do
+        is_expected.to eq rating
+      end
     end
   end
+
+  context 'call' do
+    it_behaves_like 'I&E rating calculator', 200_100, 20_000, 'A'
+    it_behaves_like 'I&E rating calculator', 700_000, 200_000, 'B'
+    it_behaves_like 'I&E rating calculator', 500_000, 200_000, 'C'
+    it_behaves_like 'I&E rating calculator', 400_000, 700_000, 'D'
+    it_behaves_like 'I&E rating calculator', 0, 400_000, 'D'
+    it_behaves_like 'I&E rating calculator', -1, 400_000, 'D'
+  end
 end
-# rubocop:enable  Metrics/BlockLength

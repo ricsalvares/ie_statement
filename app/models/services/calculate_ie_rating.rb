@@ -16,7 +16,7 @@ module Services
     attr_reader :expenditure_amount_pennies, :income_amount_pennies
 
     def calculate_ie_rating
-      return 'D' if income_amount_pennies.zero?
+      return 'D' if income_amount_pennies <= 0
       return 'A' if ie_rating < 10
       return 'B' if ie_rating < 30
       return 'C' if ie_rating < 50

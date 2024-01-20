@@ -57,7 +57,29 @@ RSpec.describe Services::UpdateStatement do
       end
     end
 
-    pending 'Missing specs to cover when it fails'
+    context 'when invalid params are provided' do
+      let(:statement) { create(:statement) }
+      let(:deleted_item) { create(:statement_item, statement:) }
+      let(:updated_item) { create(:statement_item, statement:) }
+      let(:user) { create(:user) }
+
+      let(:params) do
+        {
+          statement:,
+          user:,
+          items: [{ 'name' => nil,
+                    'amount_pennies' => '234.52',
+                    'statement_type' => '0',
+                    'id' => updated_item.id,
+                    '_destroy' => '' }]
+        }
+      end
+
+      it 'adds error to the statement' do
+        subject
+        expect(subject.errors).not_to be_empty
+      end
+    end
   end
 end
 # rubocop:enable  Metrics/BlockLength
