@@ -73,6 +73,7 @@ To avoid any particular issue while running the project, it could be running on 
 
 ## Disclaimer
 - Perhaps there are more things to be improved, especially related (but not limited) to the UI but those above are those I think would have priority to be attacked.
+- I fully understand that the work I've done as FE in this project is far from the optmal and this is for a fullstack position, it's been a while since I don't act as fullstack, and I am a bit limited on FE skills, but I am completely able to read and understand js code and reproduce them accordingly
 - All the commits were pushed to `main` just because it's a simple exercise, in a real world situation I don't do it.
 
 
