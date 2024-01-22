@@ -54,7 +54,7 @@ RSpec.describe Services::CreateStatement do
       end
     end
 
-    context 'when all correct params are provided' do
+    context 'when params is invalid' do
       let(:user) { build(:user) }
 
       it 'does not save the statement' do

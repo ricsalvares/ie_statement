@@ -13,7 +13,8 @@
         </div>
         <div class="col-md-3">
           <%= si.label :statement_type, "Type", class: "form-label"  %>
-          <%= si.select :statement_type, [['expenditure', 0], ['income', 1]], {}, class: "form-select" %>
+          <% select_statement_type = StatementItem.statement_types[si.object.statement_type] %>
+          <%= si.select :statement_type, [['expenditure', 0], ['income', 1]], { selected: select_statement_type }, class: "form-select" %>
         </div>
         <div class="col-md-2">
           <%= si.label :destroy, "Delete?", class: "form-label"  %>
