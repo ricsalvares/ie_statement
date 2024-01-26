@@ -1,3 +1,9 @@
+
+<div id="root">
+  <h2>Statements#index<h2/>
+</div>
+
+
 <div class="grid">
 
 <h2> Hello <%= current_user.email %></h2>
@@ -5,7 +11,7 @@
 
 <div class="container">
 
-  <%= link_to 'New statement', new_statement_path, class: "btn btn-primary" %>
+  <%= link_to 'New statement', new_statement_path, class: "btn btnprimary" %>
     <% if @statements.size == 0 %>
       <h2> You have no statements to check! </h2>
     <% else %>
@@ -20,7 +26,7 @@
         </thead>
         <tbody>
         <% @statements.each do |statement| %>
-          <tr> 
+          <tr>
             <td><%= link_to statement.id, statement_path(statement) %></td>
             <td><%= statement.created_at.strftime("%d/%m/%Y %H:%M") %> </td>
             <td><%= current_user.email%> </td>
