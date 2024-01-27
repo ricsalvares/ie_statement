@@ -1,6 +1,6 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import HelloWorld3 from "./HelloWorld3";
+import App from "./App";
 
 document.addEventListener("turbo:load", () => {
   console.log('addEventListener("turbo:load",')
@@ -8,6 +8,6 @@ document.addEventListener("turbo:load", () => {
 
   if (el) {
     const root = createRoot(el) 
-    root.render(<HelloWorld3 />);
+    root.render(<App />);
   }
 });

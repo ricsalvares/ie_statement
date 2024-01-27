@@ -6,33 +6,63 @@ const Statements = () => {
   const [statements, setStatements] = useState([]);
 
   useEffect(() => {
-    const url = "http://localhost:3300/api/v1/statements/index";
+    const url = "/api/v1/statements/index";
     fetch(url)
       .then((res) => {
-        debugger
         if (res.ok) {
           return res.json();
         }
         throw new Error("Network response was not ok.");
       })
-      .then((res) => 
-      {debugger; return setStatements(res)})
+      .then((res) => setStatements(res))
       .catch(() => navigate("/react"))
   }, []);
 
-  debugger
-  const allStatements = statements.map((statement, index) => (
-    <div key={index} className="col-md-6 col-lg-4">
-      <div className="card mb-4">
-        <div className="card-body">
-          <h5 className="card-title">{statement.id}</h5>
-          <Link to={`/recipe/${statement.id}`} className="btn custom-button">
-            View Statement
-          </Link>
+const tableRows = statements.map((statement, index) => (
+  <tr key={index}>
+    <td>
+      <Link to={`/react/statement/${statement.id}`}> { statement.id} </Link>
+    </td>
+    <td>{statement.user_id}</td>
+    <td>{statement.created_at}</td>
+    <td>
+      <span >{statement.ie_rating}</span>
+    </td>
+    <td>{statement.disposable_income_pennies}</td>      
+  </tr>
+))
+
+const allStatementsTable = (
+  <div className="page-content page-container" id="page-content">
+    <div className="padding">
+      <div className="row d-flex justify-content-center">
+        <div className="col-lg grid-margin stretch-card">
+          <div className="card">
+            <div className="card-body">
+              <div className="table-responsive">
+                <table className="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Created by</th>
+                      <th>Created at</th>
+                      <th>I&E rating</th>
+                      <th>Disposable Income(£)</th>
+                    </tr>
+                  </thead>
+                    <tbody>
+                      {tableRows}
+                    </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  ));
+  </div>
+);
+
 
   const noStatement = (
     <div className="vw-100 vh-50 d-flex align-items-center justify-content-center">
@@ -47,25 +77,23 @@ return (
         <div className="container py-5">
           <h1 className="display-4">Your I&E statements</h1>
           <p className="lead text-muted">
-            We’ve pulled together our most popular recipes, our latest
-            additions, and our editor’s picks, so there’s sure to be something
-            tempting for you to try.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
           </p>
         </div>
       </section>
       <div className="py-5">
         <main className="container">
-          <div className="text-end mb-3">
-            <Link to="#" className="btn custom-button">
-              Create New Statement
-            </Link>
-          </div>
-          <div className="row">
-            {statements.length > 0 ? allStatements : noStatement}
-          </div>
-          <Link to="/" className="btn btn-link">
+        <Link to="/react" className="btn btn-link">
             Home
           </Link>
+          <div className="text-end mb-3">
+            {Boolean(statements.length) && <Link to="#" className="btn btn-primary">
+              Create New Statement
+            </Link>}
+          </div>
+          <div className="row">
+            {statements.length > 0 ? allStatementsTable : noStatement}
+          </div>
         </main>
       </div>
     </>

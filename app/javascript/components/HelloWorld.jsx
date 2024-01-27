@@ -1,5 +1,5 @@
 import React from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default () => (
   <div className="vw-100 vh-100 primary-color d-flex align-items-center justify-content-center">
@@ -10,13 +10,13 @@ export default () => (
           My first hello world
         </p>
         <hr className="my-4" />
-        {/* <Link
-          to="#"
+        <Link
+          to="/react/statements"
           className="btn btn-lg custom-button"
           role="button"
         >
           View worlds
-        </Link> */}
+        </Link>
       </div>
     </div>
   </div>
