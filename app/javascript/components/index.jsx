@@ -4,7 +4,10 @@ import HelloWorld3 from "./HelloWorld3";
 
 document.addEventListener("turbo:load", () => {
   console.log('addEventListener("turbo:load",')
-  const root = createRoot(document.getElementById("root"))
+  const el = document.getElementById("root")
 
-  root.render(<HelloWorld3 />);
+  if (el) {
+    const root = createRoot(el) 
+    root.render(<HelloWorld3 />);
+  }
 });

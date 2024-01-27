@@ -28025,8 +28025,11 @@
   // app/javascript/components/index.jsx
   document.addEventListener("turbo:load", () => {
     console.log('addEventListener("turbo:load",');
-    const root = (0, import_client.createRoot)(document.getElementById("root"));
-    root.render(/* @__PURE__ */ import_react2.default.createElement(HelloWorld3_default, null));
+    const el = document.getElementById("root");
+    if (el) {
+      const root = (0, import_client.createRoot)(el);
+      root.render(/* @__PURE__ */ import_react2.default.createElement(HelloWorld3_default, null));
+    }
   });
 })();
 /*! Bundled license information:
