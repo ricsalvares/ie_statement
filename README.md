@@ -10,6 +10,7 @@ bundle install
 rails db:setup
 ```
 
+### Rails
 By running `rails server` the server will run by default on port 3000, and you can check it by accessing `http://localhost:3000/` on your browser.
 To login you can use the sample created user (password: `12341234`, email: `test@test.com`)
 
@@ -17,6 +18,24 @@ The project uses `rubocop` to ensure a code standard. To check it you can run `r
 Still related to quality, the gem `simplecov` takes place to ensure a high level of coverage for specs, it can be checked by running `open coverage/index.html` AFTER running all the specs.
 
 To run the automated test you might need to run `bundle exec rspec` instead of just `rspec`, I am quite sure `bundle exec` is required due to [this](https://github.com/ricsalvares/ie_statement/blob/main/Gemfile#L56) definition on the gem file (check "To be improved" section).
+
+### React
+To take advantage of using react, the application will load all the javascript from `application.js`. However, in order for the changes to take effect (in case it's required) both `yarn` and `node` will need to be installed. You can install them using however you want, just ensure both are installed by running
+```
+yarn --version
+node -v
+```
+
+Once yarn is installed, please run the following command to be able to check the new changes live.
+```
+yarn run watch
+```
+
+To build a newer version of application.js, please run 
+```
+yarn build
+```
+
 
 ## Project
 The idea behind was to create isolated services to handle specific operations, trying to let them as much decoupled as possible. There are some tradeoffs though, among them is the decision of not using some rails built in functionalities such as validations and how the errors are handles/displayed (please check the "To be improved" section)
@@ -38,6 +57,12 @@ It calculates the disposal income of a given statement, it returns a hash contai
 #### app/models/services/calculate_ie_rating.rb
 As mentioned before, this services calculates the I&E rating according to the income and expenditure amounts provided.
 
+#### app/controllers/api/v1/statements_controller.rb
+This is the new controller added to handle the request made by FE on the ReactJs Version
+
+#### app/javascript/components/*.js
+All the ReactJs components to render the application.
+
 ## To be improved
 As mentioned previously, this is a section to list some improvement to be done to this project.
 
@@ -48,16 +73,24 @@ The errors aren't being raised/rescued properly, in fact I just used `ActiveReco
 More validations could take place before persisting data within the services.
 
 #### Queries
-For both update and create records sometimes I use `statement.statement_items.build` before persisting it. This item and the previous 2 are related, having better validations, which occasionally raise specific errors could avoid such code, which implies 1 insert for each `statement_item` built. One maner to improve it would be having a bulk insert `MODEL.insert_all`
+For both update and create records sometimes I use `statement.statement_items.build` before persisting it. This item and the previous 2 are related, having better validations, which occasionally raise specific errors could avoid such code, which implies 1 insert for each `statement_item` built. One maner to improve it would be having a bulk insert `MODEL.insert_all`.
+On `Api::V1::StatementsController` for the sake of completeness of this task. the `statement` is eager loading the `statement_items` the records, which is not necessarily ideal.
+
+#### Presenters
+Ideally, the controllers could return a presenter which would be responsible to load the nested records, and display the data properly rather than loading the records entirely on the controllers.
 
 #### Ui/Ux
 I think it is self-explanatory, specificaly speaking about how to delete `statement_items`. The dropdown wasn't the best choice, but it saved me time. A link (with icon, perhaps) to mark the items to be deleted AND hide them from the UI would improve the User experience a lot.
+Using the react version the UX/UI has been improved. However it is still missing a proper feedback messages (when a record is successfully save/deleted or errors otherwise)
 
 #### View files
 Perhaps the files related to the views could be refactored in order to avoid DRY and, surely, improve their readability and maintanability level.
 
 #### Specs
 Fot most services/models I used TDD and, therefore the specs are indispensable, however most time I've thought on the happy paths and even when I did something considering some failures scenarios I didn't go further on that. That's why I point it as a thing to be improved.
+
+#### New components tests
+For persisting data on the `Api::V1::StatementsController` the same services have been utilised. However, as this is supposed to be a simple task I didn't add tast for those new endpoints nor for the ReactJs components.
 
 #### Use of a specific gem to manage the value in pennies properly
 As pointed previously, I've opted to use full amount of pennies to handle with moneys values (`disposable_income_pennies`, `amount_pennies`), which honestly took some effort to handle it, by adding a specific gem could save time and avoid some manual treatment for it (such as `fdiv` calls throught the code).
@@ -75,6 +108,4 @@ To avoid any particular issue while running the project, it could be running on 
 - Perhaps there are more things to be improved, especially related (but not limited) to the UI but those above are those I think would have priority to be attacked.
 - I fully understand that the work I've done as FE in this project is far from the optmal and this is for a fullstack position, it's been a while since I don't act as fullstack, and I am a bit limited on FE skills, but I am completely able to read and understand js code and reproduce them accordingly
 - All the commits were pushed to `main` just because it's a simple exercise, in a real world situation I don't do it.
-
-
-
+- The opened PR which adds these changes is unintentionally enormous and all changes which includes new components adition could be split up into smaller PR.
