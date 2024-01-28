@@ -2,11 +2,12 @@
 <div class="grid">
 
 <h2> Hello <%= current_user.email %></h2>
+<p>You can check a new version using react clicking <%= link_to 'here', react_path %> </p>
 <br>
 
 <div class="container">
 
-  <%= link_to 'New statement', new_statement_path, class: "btn btnprimary" %>
+  <%= link_to 'New statement', new_statement_path, class: "btn btn-primary" %>
     <% if @statements.size == 0 %>
       <h2> You have no statements to check! </h2>
     <% else %>
