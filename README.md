@@ -18,6 +18,8 @@ Still related to quality, the gem `simplecov` takes place to ensure a high level
 
 To run the automated test you might need to run `bundle exec rspec` instead of just `rspec`, I am quite sure `bundle exec` is required due to [this](https://github.com/ricsalvares/ie_statement/blob/main/Gemfile#L56) definition on the gem file (check "To be improved" section).
 
+There is a version using react on FE which has not been merged yet, but it can be checked by changing the branch to `react-with-yarn` [PR#1](https://github.com/ricsalvares/ie_statement/pull/1).
+
 ## Project
 The idea behind was to create isolated services to handle specific operations, trying to let them as much decoupled as possible. There are some tradeoffs though, among them is the decision of not using some rails built in functionalities such as validations and how the errors are handles/displayed (please check the "To be improved" section)
 
