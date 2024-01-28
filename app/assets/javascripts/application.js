@@ -30089,17 +30089,18 @@
       };
       return texts[section][props.action];
     };
-    statementItems = props.items.map((item, index) => /* @__PURE__ */ import_react4.default.createElement("div", { className: "form-row align-items-center", key: index }, /* @__PURE__ */ import_react4.default.createElement("div", { className: "col-auto" }, /* @__PURE__ */ import_react4.default.createElement("label", { className: "sr-only", htmlFor: `statement_item_${index}_name` }, "Name"), /* @__PURE__ */ import_react4.default.createElement(
+    statementItems = props.items.map((item, index) => /* @__PURE__ */ import_react4.default.createElement("div", { className: "row mt-2", key: index }, /* @__PURE__ */ import_react4.default.createElement("div", { className: "col-auto" }, /* @__PURE__ */ import_react4.default.createElement(
       "input",
       {
         type: "text",
         name: "name",
         defaultValue: item.name,
-        className: "form-control mb-2",
+        className: "form-control",
         id: `statement_item_${index}_name`,
-        onChange: (event) => props.onHandleChange(index, event)
+        onChange: (event) => props.onHandleChange(index, event),
+        placeholder: "Name (Salary, Rent,...)"
       }
-    )), /* @__PURE__ */ import_react4.default.createElement("div", { className: "col-auto" }, /* @__PURE__ */ import_react4.default.createElement("label", { className: "sr-only", htmlFor: `statement_item_${index}_amount_pennies` }, "Amount"), /* @__PURE__ */ import_react4.default.createElement(
+    )), /* @__PURE__ */ import_react4.default.createElement("div", { className: "col-auto" }, /* @__PURE__ */ import_react4.default.createElement(
       "input",
       {
         name: "amount_pennies",
@@ -30111,26 +30112,34 @@
         placeholder: "Amount",
         onChange: (event) => props.onHandleChange(index, event)
       }
-    )), /* @__PURE__ */ import_react4.default.createElement("div", { className: "col-auto" }, /* @__PURE__ */ import_react4.default.createElement("label", { className: "sr-only", htmlFor: `statement_item_${index}_statement_type` }, "Type"), /* @__PURE__ */ import_react4.default.createElement(
+    )), /* @__PURE__ */ import_react4.default.createElement("div", { className: "col-auto" }, /* @__PURE__ */ import_react4.default.createElement(
       "select",
       {
         name: "statement_type",
-        className: "form-selec",
+        className: "form-select",
         id: `statement_item_${index}_statement_type`,
         onChange: (event) => props.onHandleChange(index, event),
         defaultValue: item.statement_type == "income" ? "1" : "0"
       },
       /* @__PURE__ */ import_react4.default.createElement("option", { value: "0" }, "expenditure"),
       /* @__PURE__ */ import_react4.default.createElement("option", { value: "1" }, "income")
-    )), /* @__PURE__ */ import_react4.default.createElement("input", { type: "hidden", className: "form-control", id: `statement_item_${index}_id` }), /* @__PURE__ */ import_react4.default.createElement("div", { className: "col-auto" }, /* @__PURE__ */ import_react4.default.createElement("a", { onClick: () => props.onRemoveItem(index), className: "btn btn-danger mb-2" }, "X"))));
-    return /* @__PURE__ */ import_react4.default.createElement("div", { className: "container mt-5" }, /* @__PURE__ */ import_react4.default.createElement("h1", { className: "font-weight-normal mb-5" }, textBySection("header")), /* @__PURE__ */ import_react4.default.createElement(Link, { to: props.backUrl, className: "btn btn-link" }, "Back"), /* @__PURE__ */ import_react4.default.createElement("div", { className: "text-end mb-3" }, /* @__PURE__ */ import_react4.default.createElement(
+    )), /* @__PURE__ */ import_react4.default.createElement("input", { type: "hidden", className: "form-control", id: `statement_item_${index}_id` }), /* @__PURE__ */ import_react4.default.createElement("div", { className: "col-auto" }, /* @__PURE__ */ import_react4.default.createElement(
+      "a",
+      {
+        onClick: () => props.onRemoveItem(index),
+        id: `statement_item_${index}_destroy`,
+        className: "btn btn-danger mb-2"
+      },
+      "Delete"
+    ))));
+    return /* @__PURE__ */ import_react4.default.createElement(import_react4.default.Fragment, null, /* @__PURE__ */ import_react4.default.createElement("section", { className: "jumbotron jumbotron-fluid text-center" }, /* @__PURE__ */ import_react4.default.createElement("div", { className: "container py-5" }, /* @__PURE__ */ import_react4.default.createElement("h1", { className: "display-4" }, textBySection("header"), " "))), /* @__PURE__ */ import_react4.default.createElement("div", { className: "container mt-5" }, /* @__PURE__ */ import_react4.default.createElement(Link, { to: props.backUrl, className: "btn btn-link" }, "Back"), /* @__PURE__ */ import_react4.default.createElement("div", { className: "text-end mb-3" }, /* @__PURE__ */ import_react4.default.createElement(
       "button",
       {
         onClick: props.onAddFormFields,
         className: "btn btn-primary mt-3"
       },
       "Add new statement"
-    )), /* @__PURE__ */ import_react4.default.createElement("form", { onSubmit: props.onSubmit, className: "form-inline" }, /* @__PURE__ */ import_react4.default.createElement("div", { className: "row" }, statementItems), /* @__PURE__ */ import_react4.default.createElement("div", { className: "text-end mb-3" }, /* @__PURE__ */ import_react4.default.createElement("button", { type: "submit", className: "btn btn-primary mt-3" }, textBySection("submit")))));
+    )), /* @__PURE__ */ import_react4.default.createElement("form", { onSubmit: props.onSubmit, className: "row g3" }, statementItems, /* @__PURE__ */ import_react4.default.createElement("div", { className: "text-end mb-3" }, /* @__PURE__ */ import_react4.default.createElement("button", { type: "submit", className: "btn btn-primary mt-3" }, textBySection("submit"))))));
   };
   var StatementForm_default = StatementForm;
 

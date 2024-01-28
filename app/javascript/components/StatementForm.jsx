@@ -19,21 +19,19 @@ const StatementForm = (props) => {
   }
 
   statementItems = props.items.map((item, index) => (
-    <div className="form-row align-items-center" key={index}>
+    <div className="row mt-2" key={index}>
       <div className="col-auto">
-        <label className="sr-only" htmlFor={`statement_item_${index}_name`}>Name</label>
         <input
           type="text" 
           name="name"
           defaultValue={item.name}
-          className="form-control mb-2"
+          className="form-control"
           id={`statement_item_${index}_name`}
           onChange={(event)=> props.onHandleChange(index, event)}
+          placeholder="Name (Salary, Rent,...)"
           />
       </div>
-
       <div className="col-auto">
-        <label className="sr-only" htmlFor={`statement_item_${index}_amount_pennies`}>Amount</label>
           <input 
             name="amount_pennies"
             type="number"
@@ -47,10 +45,9 @@ const StatementForm = (props) => {
       </div>
 
       <div className="col-auto">
-        <label className="sr-only" htmlFor={`statement_item_${index}_statement_type`}>Type</label>
         <select 
           name="statement_type"
-          className="form-selec"
+          className="form-select"
           id={`statement_item_${index}_statement_type`}
           onChange={(event)=> props.onHandleChange(index, event)}
           defaultValue={item.statement_type == 'income' ? '1' : '0' }>
@@ -62,37 +59,41 @@ const StatementForm = (props) => {
       <input type="hidden" className="form-control" id={`statement_item_${index}_id`} />
 
       <div className="col-auto">
-        <a onClick={() => props.onRemoveItem(index)} className="btn btn-danger mb-2">X</a>
+        <a 
+          onClick={() => props.onRemoveItem(index)}
+          id={`statement_item_${index}_destroy`}
+          className="btn btn-danger mb-2">Delete</a>
       </div>
 
     </div>
 ))
 
   return (
-    <div className="container mt-5">
-      <h1 className="font-weight-normal mb-5">
-        {textBySection('header')} 
-      </h1>
-      <Link to={props.backUrl} className="btn btn-link">Back</Link>
-      <div className="text-end mb-3">
-        <button 
-          onClick={props.onAddFormFields}
-          className="btn btn-primary mt-3">
-          Add new statement
-        </button>
-      </div>
-      <form onSubmit={props.onSubmit} className="form-inline">
-        <div className="row">
-          { statementItems }
+    <> 
+      <section className="jumbotron jumbotron-fluid text-center">
+        <div className="container py-5">
+          <h1 className="display-4">{textBySection('header')} </h1>
         </div>
+      </section>
+      <div className="container mt-5">
+        <Link to={props.backUrl} className="btn btn-link">Back</Link>
         <div className="text-end mb-3">
-          <button type="submit" className="btn btn-primary mt-3">
-            {textBySection("submit")}
+          <button 
+            onClick={props.onAddFormFields}
+            className="btn btn-primary mt-3">
+            Add new statement
           </button>
         </div>
-      </form>
-    </div>
-
+        <form onSubmit={props.onSubmit} className="row g3">
+            { statementItems }
+          <div className="text-end mb-3">
+            <button type="submit" className="btn btn-primary mt-3">
+              {textBySection("submit")}
+            </button>
+          </div>
+        </form>
+      </div>
+    </>
   );
 }
 
