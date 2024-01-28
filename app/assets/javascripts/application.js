@@ -534,11 +534,11 @@
       url = url();
     }
     if (url && !/^wss?:/i.test(url)) {
-      const a2 = document.createElement("a");
-      a2.href = url;
-      a2.href = a2.href;
-      a2.protocol = a2.protocol.replace("http", "ws");
-      return a2.href;
+      const a = document.createElement("a");
+      a.href = url;
+      a.href = a.href;
+      a.protocol = a.protocol.replace("http", "ws");
+      return a.href;
     } else {
       return url;
     }
@@ -889,8 +889,8 @@
             return refObject;
           }
           var isArrayImpl = Array.isArray;
-          function isArray(a2) {
-            return isArrayImpl(a2);
+          function isArray(a) {
+            return isArrayImpl(a);
           }
           function typeName(value) {
             {
@@ -1677,7 +1677,7 @@
             }
             return dispatcher.useContext(Context);
           }
-          function useState5(initialState) {
+          function useState8(initialState) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useState(initialState);
           }
@@ -1689,7 +1689,7 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useRef(initialValue);
           }
-          function useEffect5(create, deps) {
+          function useEffect8(create, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useEffect(create, deps);
           }
@@ -2471,7 +2471,7 @@
           exports.useContext = useContext3;
           exports.useDebugValue = useDebugValue;
           exports.useDeferredValue = useDeferredValue;
-          exports.useEffect = useEffect5;
+          exports.useEffect = useEffect8;
           exports.useId = useId;
           exports.useImperativeHandle = useImperativeHandle;
           exports.useInsertionEffect = useInsertionEffect;
@@ -2479,7 +2479,7 @@
           exports.useMemo = useMemo3;
           exports.useReducer = useReducer;
           exports.useRef = useRef3;
-          exports.useState = useState5;
+          exports.useState = useState8;
           exports.useSyncExternalStore = useSyncExternalStore;
           exports.useTransition = useTransition;
           exports.version = ReactVersion;
@@ -2578,9 +2578,9 @@
               }
             }
           }
-          function compare(a2, b) {
-            var diff = a2.sortIndex - b.sortIndex;
-            return diff !== 0 ? diff : a2.id - b.id;
+          function compare(a, b) {
+            var diff = a.sortIndex - b.sortIndex;
+            return diff !== 0 ? diff : a.id - b.id;
           }
           var ImmediatePriority = 1;
           var UserBlockingPriority = 2;
@@ -2975,9 +2975,9 @@
           if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") {
             __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
           }
-          var React9 = require_react();
+          var React12 = require_react();
           var Scheduler = require_scheduler();
-          var ReactSharedInternals = React9.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+          var ReactSharedInternals = React12.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
           var suppressWarning = false;
           function setSuppressWarning(newSuppressWarning) {
             {
@@ -4582,7 +4582,7 @@
             {
               if (props.value == null) {
                 if (typeof props.children === "object" && props.children !== null) {
-                  React9.Children.forEach(props.children, function(child) {
+                  React12.Children.forEach(props.children, function(child) {
                     if (child == null) {
                       return;
                     }
@@ -4613,8 +4613,8 @@
             }
           }
           var isArrayImpl = Array.isArray;
-          function isArray(a2) {
-            return isArrayImpl(a2);
+          function isArray(a) {
+            return isArrayImpl(a);
           }
           var didWarnValueDefaultValue$1;
           {
@@ -6068,13 +6068,13 @@
               restoreStateIfNeeded();
             }
           }
-          function batchedUpdates(fn, a2, b) {
+          function batchedUpdates(fn, a, b) {
             if (isInsideEventHandler) {
-              return fn(a2, b);
+              return fn(a, b);
             }
             isInsideEventHandler = true;
             try {
-              return batchedUpdatesImpl(fn, a2, b);
+              return batchedUpdatesImpl(fn, a, b);
             } finally {
               isInsideEventHandler = false;
               finishEventHandler();
@@ -6138,7 +6138,7 @@
               passiveBrowserEventsSupported = false;
             }
           }
-          function invokeGuardedCallbackProd(name, func, context, a2, b, c, d, e, f) {
+          function invokeGuardedCallbackProd(name, func, context, a, b, c, d, e, f) {
             var funcArgs = Array.prototype.slice.call(arguments, 3);
             try {
               func.apply(context, funcArgs);
@@ -6150,7 +6150,7 @@
           {
             if (typeof window !== "undefined" && typeof window.dispatchEvent === "function" && typeof document !== "undefined" && typeof document.createEvent === "function") {
               var fakeNode = document.createElement("react");
-              invokeGuardedCallbackImpl = function invokeGuardedCallbackDev(name, func, context, a2, b, c, d, e, f) {
+              invokeGuardedCallbackImpl = function invokeGuardedCallbackDev(name, func, context, a, b, c, d, e, f) {
                 if (typeof document === "undefined" || document === null) {
                   throw new Error("The `document` global was defined when React was initialized, but is not defined anymore. This can happen in a test environment if a component schedules an update from an asynchronous callback, but the test has already finished running. To solve this, you can either unmount the component at the end of your test (and ensure that any asynchronous operations get canceled in `componentWillUnmount`), or you can change the test itself to be asynchronous.");
                 }
@@ -6225,12 +6225,12 @@
               caughtError = error2;
             }
           };
-          function invokeGuardedCallback(name, func, context, a2, b, c, d, e, f) {
+          function invokeGuardedCallback(name, func, context, a, b, c, d, e, f) {
             hasError = false;
             caughtError = null;
             invokeGuardedCallbackImpl$1.apply(reporter, arguments);
           }
-          function invokeGuardedCallbackAndCatchFirstError(name, func, context, a2, b, c, d, e, f) {
+          function invokeGuardedCallbackAndCatchFirstError(name, func, context, a, b, c, d, e, f) {
             invokeGuardedCallback.apply(this, arguments);
             if (hasError) {
               var error2 = clearCaughtError();
@@ -6459,10 +6459,10 @@
               }
               return fiber;
             }
-            var a2 = fiber;
+            var a = fiber;
             var b = alternate;
             while (true) {
-              var parentA = a2.return;
+              var parentA = a.return;
               if (parentA === null) {
                 break;
               }
@@ -6470,7 +6470,7 @@
               if (parentB === null) {
                 var nextParent = parentA.return;
                 if (nextParent !== null) {
-                  a2 = b = nextParent;
+                  a = b = nextParent;
                   continue;
                 }
                 break;
@@ -6478,7 +6478,7 @@
               if (parentA.child === parentB.child) {
                 var child = parentA.child;
                 while (child) {
-                  if (child === a2) {
+                  if (child === a) {
                     assertIsMounted(parentA);
                     return fiber;
                   }
@@ -6490,23 +6490,23 @@
                 }
                 throw new Error("Unable to find node on an unmounted component.");
               }
-              if (a2.return !== b.return) {
-                a2 = parentA;
+              if (a.return !== b.return) {
+                a = parentA;
                 b = parentB;
               } else {
                 var didFindChild = false;
                 var _child = parentA.child;
                 while (_child) {
-                  if (_child === a2) {
+                  if (_child === a) {
                     didFindChild = true;
-                    a2 = parentA;
+                    a = parentA;
                     b = parentB;
                     break;
                   }
                   if (_child === b) {
                     didFindChild = true;
                     b = parentA;
-                    a2 = parentB;
+                    a = parentB;
                     break;
                   }
                   _child = _child.sibling;
@@ -6514,16 +6514,16 @@
                 if (!didFindChild) {
                   _child = parentB.child;
                   while (_child) {
-                    if (_child === a2) {
+                    if (_child === a) {
                       didFindChild = true;
-                      a2 = parentB;
+                      a = parentB;
                       b = parentA;
                       break;
                     }
                     if (_child === b) {
                       didFindChild = true;
                       b = parentB;
-                      a2 = parentA;
+                      a = parentA;
                       break;
                     }
                     _child = _child.sibling;
@@ -6533,14 +6533,14 @@
                   }
                 }
               }
-              if (a2.alternate !== b) {
+              if (a.alternate !== b) {
                 throw new Error("Return fibers should always be each others' alternates. This error is likely caused by a bug in React. Please file an issue.");
               }
             }
-            if (a2.tag !== HostRoot) {
+            if (a.tag !== HostRoot) {
               throw new Error("Unable to find node on an unmounted component.");
             }
-            if (a2.stateNode.current === a2) {
+            if (a.stateNode.current === a) {
               return fiber;
             }
             return alternate;
@@ -7397,26 +7397,26 @@
           function laneToIndex(lane) {
             return pickArbitraryLaneIndex(lane);
           }
-          function includesSomeLane(a2, b) {
-            return (a2 & b) !== NoLanes;
+          function includesSomeLane(a, b) {
+            return (a & b) !== NoLanes;
           }
           function isSubsetOfLanes(set2, subset) {
             return (set2 & subset) === subset;
           }
-          function mergeLanes(a2, b) {
-            return a2 | b;
+          function mergeLanes(a, b) {
+            return a | b;
           }
           function removeLanes(set2, subset) {
             return set2 & ~subset;
           }
-          function intersectLanes(a2, b) {
-            return a2 & b;
+          function intersectLanes(a, b) {
+            return a & b;
           }
           function laneToLanes(lane) {
             return lane;
           }
-          function higherPriorityLane(a2, b) {
-            return a2 !== NoLane && a2 < b ? a2 : b;
+          function higherPriorityLane(a, b) {
+            return a !== NoLane && a < b ? a : b;
           }
           function createLaneMap(initial) {
             var laneMap = [];
@@ -7593,14 +7593,14 @@
               currentUpdatePriority = previousPriority;
             }
           }
-          function higherEventPriority(a2, b) {
-            return a2 !== 0 && a2 < b ? a2 : b;
+          function higherEventPriority(a, b) {
+            return a !== 0 && a < b ? a : b;
           }
-          function lowerEventPriority(a2, b) {
-            return a2 === 0 || a2 > b ? a2 : b;
+          function lowerEventPriority(a, b) {
+            return a === 0 || a > b ? a : b;
           }
-          function isHigherEventPriority(a2, b) {
-            return a2 !== 0 && a2 < b;
+          function isHigherEventPriority(a, b) {
+            return a !== 0 && a < b;
           }
           function lanesToEventPriority(lanes) {
             var lane = getHighestPriorityLane(lanes);
@@ -13029,7 +13029,7 @@
             }
           }
           var fakeInternalInstance = {};
-          var emptyRefsObject = new React9.Component().refs;
+          var emptyRefsObject = new React12.Component().refs;
           var didWarnAboutStateAssignmentForComponent;
           var didWarnAboutUninitializedState;
           var didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate;
@@ -21400,11 +21400,11 @@
               }
             }
           }
-          function batchedUpdates$1(fn, a2) {
+          function batchedUpdates$1(fn, a) {
             var prevExecutionContext = executionContext;
             executionContext |= BatchedContext;
             try {
-              return fn(a2);
+              return fn(a);
             } finally {
               executionContext = prevExecutionContext;
               if (executionContext === NoContext && // Treat `act` as if it's inside `batchedUpdates`, even in legacy mode.
@@ -21414,13 +21414,13 @@
               }
             }
           }
-          function discreteUpdates(fn, a2, b, c, d) {
+          function discreteUpdates(fn, a, b, c, d) {
             var previousPriority = getCurrentUpdatePriority();
             var prevTransition = ReactCurrentBatchConfig$3.transition;
             try {
               ReactCurrentBatchConfig$3.transition = null;
               setCurrentUpdatePriority(DiscreteEventPriority);
-              return fn(a2, b, c, d);
+              return fn(a, b, c, d);
             } finally {
               setCurrentUpdatePriority(previousPriority);
               ReactCurrentBatchConfig$3.transition = prevTransition;
@@ -28015,14 +28015,14 @@
   addEventListener("turbo:before-fetch-request", encodeMethodIntoRequestBody);
 
   // app/javascript/components/index.jsx
-  var import_react5 = __toESM(require_react());
+  var import_react8 = __toESM(require_react());
   var import_client = __toESM(require_client());
 
   // app/javascript/components/App.jsx
-  var import_react4 = __toESM(require_react());
+  var import_react7 = __toESM(require_react());
 
   // app/javascript/routes/index.jsx
-  var React6 = __toESM(require_react());
+  var React9 = __toESM(require_react());
 
   // node_modules/react-router-dom/dist/index.js
   var React2 = __toESM(require_react());
@@ -28395,7 +28395,7 @@
     return result.map((exploded) => path.startsWith("/") && exploded === "" ? "/" : exploded);
   }
   function rankRouteBranches(branches) {
-    branches.sort((a2, b) => a2.score !== b.score ? b.score - a2.score : compareIndexes(a2.routesMeta.map((meta) => meta.childrenIndex), b.routesMeta.map((meta) => meta.childrenIndex)));
+    branches.sort((a, b) => a.score !== b.score ? b.score - a.score : compareIndexes(a.routesMeta.map((meta) => meta.childrenIndex), b.routesMeta.map((meta) => meta.childrenIndex)));
   }
   var paramRe = /^:[\w-]+$/;
   var dynamicSegmentValue = 3;
@@ -28415,14 +28415,14 @@
     }
     return segments.filter((s) => !isSplat(s)).reduce((score, segment) => score + (paramRe.test(segment) ? dynamicSegmentValue : segment === "" ? emptySegmentValue : staticSegmentValue), initialScore);
   }
-  function compareIndexes(a2, b) {
-    let siblings = a2.length === b.length && a2.slice(0, -1).every((n, i) => n === b[i]);
+  function compareIndexes(a, b) {
+    let siblings = a.length === b.length && a.slice(0, -1).every((n, i) => n === b[i]);
     return siblings ? (
       // If two routes are siblings, we should try to match the earlier sibling
       // first. This allows people to have fine-grained control over the matching
       // behavior by simply putting routes with identical paths in the order they
       // want them tried.
-      a2[a2.length - 1] - b[b.length - 1]
+      a[a.length - 1] - b[b.length - 1]
     ) : (
       // Otherwise, it doesn't really make sense to rank non-siblings by index,
       // so they sort equally.
@@ -29989,7 +29989,7 @@
     const tableRows = statements.map((statement, index) => /* @__PURE__ */ import_react2.default.createElement("tr", { key: index }, /* @__PURE__ */ import_react2.default.createElement("td", null, /* @__PURE__ */ import_react2.default.createElement(Link, { to: `/react/statement/${statement.id}` }, " ", statement.id, " ")), /* @__PURE__ */ import_react2.default.createElement("td", null, statement.user_id), /* @__PURE__ */ import_react2.default.createElement("td", null, statement.created_at), /* @__PURE__ */ import_react2.default.createElement("td", null, /* @__PURE__ */ import_react2.default.createElement("span", null, statement.ie_rating)), /* @__PURE__ */ import_react2.default.createElement("td", null, statement.disposable_income_pennies)));
     const allStatementsTable = /* @__PURE__ */ import_react2.default.createElement("div", { className: "page-content page-container", id: "page-content" }, /* @__PURE__ */ import_react2.default.createElement("div", { className: "padding" }, /* @__PURE__ */ import_react2.default.createElement("div", { className: "row d-flex justify-content-center" }, /* @__PURE__ */ import_react2.default.createElement("div", { className: "col-lg grid-margin stretch-card" }, /* @__PURE__ */ import_react2.default.createElement("div", { className: "card" }, /* @__PURE__ */ import_react2.default.createElement("div", { className: "card-body" }, /* @__PURE__ */ import_react2.default.createElement("div", { className: "table-responsive" }, /* @__PURE__ */ import_react2.default.createElement("table", { className: "table table-hover" }, /* @__PURE__ */ import_react2.default.createElement("thead", null, /* @__PURE__ */ import_react2.default.createElement("tr", null, /* @__PURE__ */ import_react2.default.createElement("th", null, "ID"), /* @__PURE__ */ import_react2.default.createElement("th", null, "Created by"), /* @__PURE__ */ import_react2.default.createElement("th", null, "Created at"), /* @__PURE__ */ import_react2.default.createElement("th", null, "I&E rating"), /* @__PURE__ */ import_react2.default.createElement("th", null, "Disposable Income(\xA3)"))), /* @__PURE__ */ import_react2.default.createElement("tbody", null, tableRows)))))))));
     const noStatement = /* @__PURE__ */ import_react2.default.createElement("div", { className: "vw-100 vh-50 d-flex align-items-center justify-content-center" }, /* @__PURE__ */ import_react2.default.createElement("h4", null, "No Statements yet. Why not ", /* @__PURE__ */ import_react2.default.createElement(Link, { to: "#" }, "create one")));
-    return /* @__PURE__ */ import_react2.default.createElement(import_react2.default.Fragment, null, /* @__PURE__ */ import_react2.default.createElement("section", { className: "jumbotron jumbotron-fluid text-center" }, /* @__PURE__ */ import_react2.default.createElement("div", { className: "container py-5" }, /* @__PURE__ */ import_react2.default.createElement("h1", { className: "display-4" }, "Your I&E statements"), /* @__PURE__ */ import_react2.default.createElement("p", { className: "lead text-muted" }, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."))), /* @__PURE__ */ import_react2.default.createElement("div", { className: "py-5" }, /* @__PURE__ */ import_react2.default.createElement("main", { className: "container" }, /* @__PURE__ */ import_react2.default.createElement(Link, { to: "/react", className: "btn btn-link" }, "Home"), /* @__PURE__ */ import_react2.default.createElement("div", { className: "text-end mb-3" }, Boolean(statements.length) && /* @__PURE__ */ import_react2.default.createElement(Link, { to: "#", className: "btn btn-primary" }, "Create New Statement")), /* @__PURE__ */ import_react2.default.createElement("div", { className: "row" }, statements.length > 0 ? allStatementsTable : noStatement))));
+    return /* @__PURE__ */ import_react2.default.createElement(import_react2.default.Fragment, null, /* @__PURE__ */ import_react2.default.createElement("section", { className: "jumbotron jumbotron-fluid text-center" }, /* @__PURE__ */ import_react2.default.createElement("div", { className: "container py-5" }, /* @__PURE__ */ import_react2.default.createElement("h1", { className: "display-4" }, "Your I&E statements"), /* @__PURE__ */ import_react2.default.createElement("p", { className: "lead text-muted" }, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."))), /* @__PURE__ */ import_react2.default.createElement("div", { className: "py-5" }, /* @__PURE__ */ import_react2.default.createElement("main", { className: "container" }, /* @__PURE__ */ import_react2.default.createElement(Link, { to: "/react", className: "btn btn-link" }, "Home"), /* @__PURE__ */ import_react2.default.createElement("div", { className: "text-end mb-3" }, Boolean(statements.length) && /* @__PURE__ */ import_react2.default.createElement(Link, { to: "/react/statement", className: "btn btn-primary" }, "Create New Statement")), /* @__PURE__ */ import_react2.default.createElement("div", { className: "row" }, statements.length > 0 ? allStatementsTable : noStatement))));
   };
   var Statements_default = Statements;
 
@@ -30007,21 +30007,41 @@
         }
         throw new Error("Network response was not ok.");
       }).then((res) => {
-        debugger;
-        return setStatement(res[0]);
+        return setStatement(res);
       }).catch(() => navigate("/react"));
     }, []);
-    items = () => {
-      a = statement;
-      debugger;
-      return /* @__PURE__ */ import_react3.default.createElement("p", null, "item 1");
+    const deleteStatement = () => {
+      const url = `/api/v1/statements/delete/${params.id}`;
+      const token = document.querySelector('meta[name="csrf-token"]').content;
+      if (confirm("Are you sure?") == true) {
+        fetch(url, {
+          method: "DELETE",
+          headers: {
+            "X-CSRF-Token": token,
+            "Content-Type": "application/json"
+          }
+        }).then((response) => {
+          if (response.ok) {
+            return response.json();
+          }
+          throw new Error("Network response was not ok.");
+        }).then(() => navigate("/react/statements")).catch((error) => console.log(error.message));
+      }
     };
-    return /* @__PURE__ */ import_react3.default.createElement("div", { className: "" }, /* @__PURE__ */ import_react3.default.createElement("div", { className: "container py-5" }, /* @__PURE__ */ import_react3.default.createElement("div", { className: "row" }, /* @__PURE__ */ import_react3.default.createElement("div", { className: "col-sm-12 col-lg-7" }, /* @__PURE__ */ import_react3.default.createElement("ul", { className: "list-group" }, /* @__PURE__ */ import_react3.default.createElement("h5", { className: "mb-2" }, `#${statement.id} attributes:`), /* @__PURE__ */ import_react3.default.createElement("h5", { className: "mb-2" }, `#${statement.id} items:`), items())), /* @__PURE__ */ import_react3.default.createElement("div", { className: "col-sm-12 col-lg-2" }, /* @__PURE__ */ import_react3.default.createElement(
-      "button",
+    statementItemsTableRows = () => statement.statement_items.map((item, index) => /* @__PURE__ */ import_react3.default.createElement("tr", { key: index }, /* @__PURE__ */ import_react3.default.createElement("td", null, item.id), /* @__PURE__ */ import_react3.default.createElement("td", null, item.name), /* @__PURE__ */ import_react3.default.createElement("td", null, item.amount_pennies), /* @__PURE__ */ import_react3.default.createElement("td", null, item.statement_type)));
+    items = () => {
+      const hasItems = Boolean(statement.statement_items) && Boolean(Object.keys(statement.statement_items).length);
+      if (hasItems) {
+        return /* @__PURE__ */ import_react3.default.createElement("table", { className: "table table-hover" }, /* @__PURE__ */ import_react3.default.createElement("thead", null, /* @__PURE__ */ import_react3.default.createElement("tr", null, /* @__PURE__ */ import_react3.default.createElement("th", null, "ID"), /* @__PURE__ */ import_react3.default.createElement("th", null, "Name"), /* @__PURE__ */ import_react3.default.createElement("th", null, "Amount"), /* @__PURE__ */ import_react3.default.createElement("th", null, "Type"))), /* @__PURE__ */ import_react3.default.createElement("tbody", null, statementItemsTableRows()));
+      }
+      return /* @__PURE__ */ import_react3.default.createElement("p", null, " No items");
+    };
+    return /* @__PURE__ */ import_react3.default.createElement("div", { className: "" }, /* @__PURE__ */ import_react3.default.createElement("div", { className: "container py-5" }, /* @__PURE__ */ import_react3.default.createElement("div", { className: "row" }, /* @__PURE__ */ import_react3.default.createElement("div", { className: "col-sm-12 col-lg-7" }, /* @__PURE__ */ import_react3.default.createElement("ul", { className: "list-group" }, /* @__PURE__ */ import_react3.default.createElement("h5", { className: "mb-2" }, `Id: #${statement.id}`), /* @__PURE__ */ import_react3.default.createElement("h5", { className: "mb-2" }, `disposable_income_pennies: \xA3${statement.disposable_income_pennies}`), /* @__PURE__ */ import_react3.default.createElement("h5", { className: "mb-2" }, `ie_rating: ${statement.ie_rating}`), items())), /* @__PURE__ */ import_react3.default.createElement("div", { className: "col-sm-12 col-lg-2" }, /* @__PURE__ */ import_react3.default.createElement(
+      Link,
       {
         type: "button",
         className: "btn btn-primary",
-        onClick: alert
+        to: `/react/statement/${statement.id}/edit`
       },
       "Edit"
     ), /* @__PURE__ */ import_react3.default.createElement(
@@ -30029,18 +30049,231 @@
       {
         type: "button",
         className: "btn btn-danger",
-        onClick: alert
+        onClick: deleteStatement
       },
       "Delete"
     ))), /* @__PURE__ */ import_react3.default.createElement(Link, { to: "/react/statements", className: "btn btn-link" }, "Back to statements")));
   };
   var Statement_default = Statement;
 
+  // app/javascript/components/NewStatement.jsx
+  var import_react5 = __toESM(require_react());
+
+  // app/javascript/components/StatementForm.jsx
+  var import_react4 = __toESM(require_react());
+  var StatementForm = (props) => {
+    statementItems = props.items.map((item, index) => /* @__PURE__ */ import_react4.default.createElement("div", { className: "form-row align-items-center", key: index }, /* @__PURE__ */ import_react4.default.createElement("div", { className: "col-auto" }, /* @__PURE__ */ import_react4.default.createElement("label", { className: "sr-only", htmlFor: `statement_item_${index}_name` }, "Name"), /* @__PURE__ */ import_react4.default.createElement(
+      "input",
+      {
+        type: "text",
+        name: "name",
+        className: "form-control mb-2",
+        id: `statement_item_${index}_name`,
+        onChange: (event) => props.onHandleChange(index, event)
+      }
+    )), /* @__PURE__ */ import_react4.default.createElement("div", { className: "col-auto" }, /* @__PURE__ */ import_react4.default.createElement("label", { className: "sr-only", htmlFor: `statement_item_${index}_amount_pennies` }, "Amount"), /* @__PURE__ */ import_react4.default.createElement(
+      "input",
+      {
+        name: "amount_pennies",
+        type: "number",
+        step: ".01",
+        className: "form-control",
+        id: `statement_item_${index}_amount_pennies`,
+        placeholder: "Amount",
+        onChange: (event) => props.onHandleChange(index, event)
+      }
+    )), /* @__PURE__ */ import_react4.default.createElement("div", { className: "col-auto" }, /* @__PURE__ */ import_react4.default.createElement("label", { className: "sr-only", htmlFor: `statement_item_${index}_statement_type` }, "Type"), /* @__PURE__ */ import_react4.default.createElement(
+      "select",
+      {
+        name: "statement_type",
+        className: "form-selec",
+        id: `statement_item_${index}_statement_type`,
+        onChange: (event) => props.onHandleChange(index, event)
+      },
+      /* @__PURE__ */ import_react4.default.createElement("option", { value: "0" }, "expenditure"),
+      /* @__PURE__ */ import_react4.default.createElement("option", { value: "1" }, "income")
+    )), /* @__PURE__ */ import_react4.default.createElement("input", { type: "hidden", className: "form-control", id: `statement_item_${index}_id` }), /* @__PURE__ */ import_react4.default.createElement("div", { className: "col-auto" }, /* @__PURE__ */ import_react4.default.createElement("a", { onClick: () => props.onRemoveItem(index), className: "btn btn-danger mb-2" }, "X"))));
+    return /* @__PURE__ */ import_react4.default.createElement("div", { className: "container mt-5" }, /* @__PURE__ */ import_react4.default.createElement("h1", { className: "font-weight-normal mb-5" }, "Add a new statement."), /* @__PURE__ */ import_react4.default.createElement(
+      "button",
+      {
+        onClick: props.onAddFormFields,
+        className: "btn btn-primary mt-3"
+      },
+      "Add new statement"
+    ), /* @__PURE__ */ import_react4.default.createElement("form", { onSubmit: props.onSubmit, className: "form-inline" }, /* @__PURE__ */ import_react4.default.createElement("div", { className: "row" }, statementItems), /* @__PURE__ */ import_react4.default.createElement("button", { type: "submit", className: "btn btn-primary mt-3" }, "Create statement")));
+  };
+  var StatementForm_default = StatementForm;
+
+  // app/javascript/components/NewStatement.jsx
+  var NewStatement = () => {
+    const itemAttr = ["name", "amount_pennies", "statement_type", "id", "_destroy"];
+    const navigate = useNavigate();
+    const [itemFormValues, setItemFormValues] = (0, import_react5.useState)([{ "name": "", "amount_pennies": "", "statement_type": "0", "id": "", "_destroy": "" }]);
+    const [toBeDeleted, setToBeDeleted] = (0, import_react5.useState)([]);
+    const emptyFormAttributes = { "name": "", "amount_pennies": "", "statement_type": "0", "id": "", "_destroy": "" };
+    const handleChange = (i, e) => {
+      let newFormValues = [...itemFormValues];
+      newFormValues[i][e.target.name] = e.target.value;
+      setItemFormValues(newFormValues);
+    };
+    const addFormFields = () => {
+      setItemFormValues([...itemFormValues, emptyFormAttributes]);
+    };
+    const removeFormFields = (i) => {
+      let newFormValues = [...itemFormValues];
+      if (newFormValues[i].id) {
+        setToBeDeleted([...toBeDeleted, { id: newFormValues[i].id, _delete: "1" }]);
+      }
+      newFormValues.splice(i, 1);
+      setItemFormValues(newFormValues);
+    };
+    const onSubmit = (event) => {
+      const body = {
+        statement: {
+          items: [...itemFormValues, ...toBeDeleted]
+        }
+      };
+      event.preventDefault();
+      const url = "/api/v1/statements/create";
+      const token = document.querySelector('meta[name="csrf-token"]').content;
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "X-CSRF-Token": token,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(body)
+      }).then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error("Network response was not ok.");
+      }).then((response) => navigate(`/react/statement/${response.id}`)).catch((error) => console.log(error.message));
+    };
+    return /* @__PURE__ */ import_react5.default.createElement(
+      StatementForm_default,
+      {
+        items: itemFormValues,
+        onAddFormFields: addFormFields,
+        onHandleChange: handleChange,
+        onSubmit,
+        onRemoveItem: removeFormFields
+      }
+    );
+  };
+  var NewStatement_default = NewStatement;
+
+  // app/javascript/components/EditStatement.jsx
+  var import_react6 = __toESM(require_react());
+  var EditStatement = () => {
+    const itemAttr = ["name", "amount_pennies", "statement_type", "id", "_destroy"];
+    const navigate = useNavigate();
+    const params = useParams();
+    const [itemFormValues, setItemFormValues] = (0, import_react6.useState)([]);
+    const [toBeDeleted, setToBeDeleted] = (0, import_react6.useState)([]);
+    const emptyFormAttributes = { "name": "", "amount_pennies": "", "statement_type": "0", "id": "", "_destroy": "" };
+    (0, import_react6.useEffect)(() => {
+      const url = `/api/v1/statement/show/${params.id}`;
+      fetch(url).then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        throw new Error("Network response was not ok.");
+      }).then((res) => {
+        return setItemFormValues(res.statement_items);
+      }).catch(() => navigate("/react"));
+    }, []);
+    const handleChange = (i, e) => {
+      let newFormValues = [...itemFormValues];
+      newFormValues[i][e.target.name] = e.target.value;
+      setItemFormValues(newFormValues);
+    };
+    const addFormFields = () => {
+      setItemFormValues([...itemFormValues, emptyFormAttributes]);
+    };
+    const removeFormFields = (i) => {
+      let newFormValues = [...itemFormValues];
+      debugger;
+      if (newFormValues[i].id) {
+        setToBeDeleted([...toBeDeleted, { id: newFormValues[i].id, _delete: "1" }]);
+      }
+      newFormValues.splice(i, 1);
+      setItemFormValues(newFormValues);
+    };
+    const onSubmit = (event) => {
+      const body = {
+        statement: {
+          items: [...itemFormValues, ...toBeDeleted]
+        }
+      };
+      event.preventDefault();
+      const url = "/api/v1/statements/create";
+      const token = document.querySelector('meta[name="csrf-token"]').content;
+      debugger;
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "X-CSRF-Token": token,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(body)
+      }).then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error("Network response was not ok.");
+      }).then((response) => navigate(`/react/statement/${response.id}`)).catch((error) => console.log(error.message));
+    };
+    statementItems = itemFormValues.map((item, index) => /* @__PURE__ */ import_react6.default.createElement("div", { className: "form-row align-items-center", key: index }, /* @__PURE__ */ import_react6.default.createElement("div", { className: "col-auto" }, /* @__PURE__ */ import_react6.default.createElement("label", { className: "sr-only", htmlFor: `statement_item_${index}_name` }, "Name"), /* @__PURE__ */ import_react6.default.createElement(
+      "input",
+      {
+        type: "text",
+        name: "name",
+        defaultValue: item.name,
+        className: "form-control mb-2",
+        id: `statement_item_${index}_name`,
+        onChange: (event) => handleChange(index, event)
+      }
+    )), /* @__PURE__ */ import_react6.default.createElement("div", { className: "col-auto" }, /* @__PURE__ */ import_react6.default.createElement("label", { className: "sr-only", htmlFor: `statement_item_${index}_amount_pennies` }, "Amount"), /* @__PURE__ */ import_react6.default.createElement(
+      "input",
+      {
+        name: "amount_pennies",
+        defaultValue: item.amount_pennies,
+        type: "number",
+        step: ".01",
+        className: "form-control",
+        id: `statement_item_${index}_amount_pennies`,
+        placeholder: "Amount",
+        onChange: (event) => handleChange(index, event)
+      }
+    )), /* @__PURE__ */ import_react6.default.createElement("div", { className: "col-auto" }, /* @__PURE__ */ import_react6.default.createElement("label", { className: "sr-only", htmlFor: `statement_item_${index}_statement_type` }, "Type"), /* @__PURE__ */ import_react6.default.createElement(
+      "select",
+      {
+        name: "statement_type",
+        className: "form-selec",
+        defaultValue: item.statement_type == "expenditure" ? "0" : "1",
+        id: `statement_item_${index}_statement_type`,
+        onChange: (event) => handleChange(index, event)
+      },
+      /* @__PURE__ */ import_react6.default.createElement("option", { value: "0" }, "expenditure"),
+      /* @__PURE__ */ import_react6.default.createElement("option", { value: "1" }, "income")
+    )), /* @__PURE__ */ import_react6.default.createElement("input", { type: "hidden", className: "form-control", id: `statement_item_${index}_id` }), /* @__PURE__ */ import_react6.default.createElement("div", { className: "col-auto" }, /* @__PURE__ */ import_react6.default.createElement("a", { onClick: () => removeFormFields(index), className: "btn btn-danger mb-2" }, "X"))));
+    return /* @__PURE__ */ import_react6.default.createElement("div", { className: "container mt-5" }, /* @__PURE__ */ import_react6.default.createElement("h1", { className: "font-weight-normal mb-5" }, "Add a new statement."), /* @__PURE__ */ import_react6.default.createElement(
+      "button",
+      {
+        onClick: addFormFields,
+        className: "btn btn-primary mt-3"
+      },
+      "Add new statement"
+    ), /* @__PURE__ */ import_react6.default.createElement("form", { onSubmit, className: "form-inline" }, /* @__PURE__ */ import_react6.default.createElement("div", { className: "row" }, statementItems), /* @__PURE__ */ import_react6.default.createElement("button", { type: "submit", className: "btn btn-primary mt-3" }, "Create statement")));
+  };
+  var EditStatement_default = EditStatement;
+
   // app/javascript/routes/index.jsx
-  var routes_default = /* @__PURE__ */ React6.createElement(BrowserRouter, null, /* @__PURE__ */ React6.createElement(Routes, null, /* @__PURE__ */ React6.createElement(Route, { path: "/react", element: /* @__PURE__ */ React6.createElement(HelloWorld_default, null) }), /* @__PURE__ */ React6.createElement(Route, { path: "/react/statements", element: /* @__PURE__ */ React6.createElement(Statements_default, null) }), /* @__PURE__ */ React6.createElement(Route, { path: "/react/statement/:id", element: /* @__PURE__ */ React6.createElement(Statement_default, null) })));
+  var routes_default = /* @__PURE__ */ React9.createElement(BrowserRouter, null, /* @__PURE__ */ React9.createElement(Routes, null, /* @__PURE__ */ React9.createElement(Route, { path: "/react", element: /* @__PURE__ */ React9.createElement(HelloWorld_default, null) }), /* @__PURE__ */ React9.createElement(Route, { path: "/react/statements", element: /* @__PURE__ */ React9.createElement(Statements_default, null) }), /* @__PURE__ */ React9.createElement(Route, { path: "/react/statement/:id", element: /* @__PURE__ */ React9.createElement(Statement_default, null) }), /* @__PURE__ */ React9.createElement(Route, { path: "/react/statement", element: /* @__PURE__ */ React9.createElement(NewStatement_default, null) }), /* @__PURE__ */ React9.createElement(Route, { path: "/react/statement/:id/edit", element: /* @__PURE__ */ React9.createElement(EditStatement_default, null) })));
 
   // app/javascript/components/App.jsx
-  var App_default = (props) => /* @__PURE__ */ import_react4.default.createElement(import_react4.default.Fragment, null, routes_default);
+  var App_default = (props) => /* @__PURE__ */ import_react7.default.createElement(import_react7.default.Fragment, null, routes_default);
 
   // app/javascript/components/index.jsx
   document.addEventListener("turbo:load", () => {
@@ -30048,7 +30281,7 @@
     const el = document.getElementById("root");
     if (el) {
       const root = (0, import_client.createRoot)(el);
-      root.render(/* @__PURE__ */ import_react5.default.createElement(App_default, null));
+      root.render(/* @__PURE__ */ import_react8.default.createElement(App_default, null));
     }
   });
 })();

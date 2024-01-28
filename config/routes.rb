@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       post 'statements/create'
       get 'statement/show/:id', to: 'statements#show'
       put 'statements/:id', to: 'statements#update'
-      delete 'statements/delete/:id', to: 'statements#delete'
+      delete 'statements/delete/:id', to: 'statements#destroy'
     end
   end
   devise_for :users

@@ -87,7 +87,7 @@ return (
             Home
           </Link>
           <div className="text-end mb-3">
-            {Boolean(statements.length) && <Link to="#" className="btn btn-primary">
+            {Boolean(statements.length) && <Link to="/react/statement" className="btn btn-primary">
               Create New Statement
             </Link>}
           </div>

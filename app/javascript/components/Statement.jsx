@@ -16,40 +16,62 @@ const Statement = () => {
         throw new Error("Network response was not ok.");
       })
       .then((res) => {
-
-        debugger
-       return setStatement(res[0])
+       return setStatement(res)
       })
       .catch(() => navigate("/react"))
   }, []);
 
-  // const deleteRecipe = () => {
-  //   const url = `/api/v1/destroy/${params.id}`;
-  //   const token = document.querySelector('meta[name="csrf-token"]').content;
-  //   if (confirm("Are you sure?") == true) {
-  //     fetch(url, {
-  //       method: "DELETE",
-  //       headers: {
-  //         "X-CSRF-Token": token,
-  //         "Content-Type": "application/json",
-  //       },
-  //     })
-  //       .then((response) => {
-  //         if (response.ok) {
-  //           return response.json();
-  //         }
-  //         throw new Error("Network response was not ok.");
-  //       })
-  //       .then(() => navigate("/recipes"))
-  //       .catch((error) => console.log(error.message));
-  //   }
-    
-  // };
+  const deleteStatement = () => {
+    const url = `/api/v1/statements/delete/${params.id}`;
+    const token = document.querySelector('meta[name="csrf-token"]').content;
+    if (confirm("Are you sure?") == true) {
+      fetch(url, {
+        method: "DELETE",
+        headers: {
+          "X-CSRF-Token": token,
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          }
+          throw new Error("Network response was not ok.");
+        })
+        .then(() => navigate("/react/statements"))
+        .catch((error) => console.log(error.message));
+    }
+  };
+
+
+  statementItemsTableRows = () => (statement.statement_items.map((item, index) => (
+    <tr key={index}>
+      <td>{item.id}</td>
+      <td>{item.name}</td>
+      <td>{item.amount_pennies}</td>
+      <td>{item.statement_type}</td>      
+    </tr>
+  )))
 
   items = () => { 
-    a = statement
-    debugger
-    return (<p>item 1</p>) }
+    const hasItems = Boolean(statement.statement_items) && Boolean(Object.keys(statement.statement_items).length)
+    if (hasItems) {
+      return (<table className="table table-hover">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Amount</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+        <tbody>
+          {statementItemsTableRows()}
+        </tbody>
+      </table>)
+    }
+    return (<p> No items</p>)
+  }
 
   return (
     <div className="">
@@ -58,24 +80,25 @@ const Statement = () => {
         <div className="row">
           <div className="col-sm-12 col-lg-7">
             <ul className="list-group">
-            <h5 className="mb-2">{`#${statement.id} attributes:`}</h5>
-              <h5 className="mb-2">{`#${statement.id} items:`}</h5>
+            <h5 className="mb-2">{`Id: #${statement.id}`}</h5>
+            <h5 className="mb-2">{`disposable_income_pennies: £${statement.disposable_income_pennies}`}</h5>
+            <h5 className="mb-2">{`ie_rating: ${statement.ie_rating}`}</h5>
               {items()}
             </ul>
           </div>
           <div className="col-sm-12 col-lg-2">
-            <button
+            <Link
               type="button"
               className="btn btn-primary"
-              onClick={alert}
+              to={`/react/statement/${statement.id}/edit`}
             >
               Edit
-            </button>
+            </Link>
 
             <button
               type="button"
               className="btn btn-danger"
-              onClick={alert}
+              onClick={deleteStatement}
             >
               Delete
             </button>
