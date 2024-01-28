@@ -1,0 +1,31 @@
+Arguments: 
+  /Users/ricardo.alvares/.asdf/installs/nodejs/21.6.0/bin/node /Users/ricardo.alvares/.yarn/bin/yarn.js
+
+PATH: 
+  /Users/ricardo.alvares/.asdf/plugins/nodejs/shims:/Users/ricardo.alvares/.asdf/installs/nodejs/21.6.0/bin:/Users/ricardo.alvares/.docker/bin:/opt/homebrew/opt/openjdk/bin:/Users/ricardo.alvares/.asdf/shims:/Users/ricardo.alvares/.asdf/bin:/Users/ricardo.alvares/.yarn/bin:/Users/ricardo.alvares/.config/yarn/global/node_modules/.bin:/Users/ricardo.alvares/.rbenv/shims:/Library/Frameworks/Python.framework/Versions/3.11/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/go/bin:/usr/local/laps
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  21.6.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  SyntaxError: /Users/ricardo.alvares/Personal/personal_learning/ophelos/ie_statement/package.json: Unexpected end of JSON input
+      at JSON.parse (<anonymous>)
+      at /Users/ricardo.alvares/.yarn/lib/cli.js:1629:59
+      at Generator.next (<anonymous>)
+      at step (/Users/ricardo.alvares/.yarn/lib/cli.js:310:30)
+      at /Users/ricardo.alvares/.yarn/lib/cli.js:321:13
+
+npm manifest: 
+  
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

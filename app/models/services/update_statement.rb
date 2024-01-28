@@ -51,8 +51,9 @@ module Services
 
     def update_items
       statement_items = StatementItem.where(statement_id: statement.id, id: items_to_be_updated.keys).index_by(&:id)
+
       statement_items.each do |id, statement_item|
-        params = param_by_item(items_to_be_updated[id].with_indifferent_access)
+        params = param_by_item(items_to_be_updated[id])
         statement_item.update!(**params)
       end
     end
@@ -70,7 +71,7 @@ module Services
 
     def create_items
       items_to_be_created.each do |item|
-        statement.statement_items.create(**param_by_item(item.with_indifferent_access))
+        statement.statement_items.create(**param_by_item(item))
       end
     end
 

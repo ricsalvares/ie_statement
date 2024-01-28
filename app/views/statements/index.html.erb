@@ -1,6 +1,8 @@
+
 <div class="grid">
 
 <h2> Hello <%= current_user.email %></h2>
+<p>You can check a new version using react clicking <%= link_to 'here', react_path %> </p>
 <br>
 
 <div class="container">
@@ -20,7 +22,7 @@
         </thead>
         <tbody>
         <% @statements.each do |statement| %>
-          <tr> 
+          <tr>
             <td><%= link_to statement.id, statement_path(statement) %></td>
             <td><%= statement.created_at.strftime("%d/%m/%Y %H:%M") %> </td>
             <td><%= current_user.email%> </td>

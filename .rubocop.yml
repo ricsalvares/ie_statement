@@ -7,3 +7,6 @@ AllCops:
     - config/initializers/devise.rb
     - db/schema.rb
   NewCops: enable
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*_spec.rb
