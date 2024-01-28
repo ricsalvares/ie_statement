@@ -77,13 +77,13 @@ return (
         <div className="container py-5">
           <h1 className="display-4">Your I&E statements</h1>
           <p className="lead text-muted">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            Here you can check all your statements.
           </p>
         </div>
       </section>
       <div className="py-5">
         <main className="container">
-        <Link to="/react" className="btn btn-link">
+          <Link to="/react" className="btn btn-link">
             Home
           </Link>
           <div className="text-end mb-3">

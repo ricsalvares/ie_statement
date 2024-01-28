@@ -1677,7 +1677,7 @@
             }
             return dispatcher.useContext(Context);
           }
-          function useState8(initialState) {
+          function useState7(initialState) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useState(initialState);
           }
@@ -1689,7 +1689,7 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useRef(initialValue);
           }
-          function useEffect8(create, deps) {
+          function useEffect6(create, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useEffect(create, deps);
           }
@@ -2471,7 +2471,7 @@
           exports.useContext = useContext3;
           exports.useDebugValue = useDebugValue;
           exports.useDeferredValue = useDeferredValue;
-          exports.useEffect = useEffect8;
+          exports.useEffect = useEffect6;
           exports.useId = useId;
           exports.useImperativeHandle = useImperativeHandle;
           exports.useInsertionEffect = useInsertionEffect;
@@ -2479,7 +2479,7 @@
           exports.useMemo = useMemo3;
           exports.useReducer = useReducer;
           exports.useRef = useRef3;
-          exports.useState = useState8;
+          exports.useState = useState7;
           exports.useSyncExternalStore = useSyncExternalStore;
           exports.useTransition = useTransition;
           exports.version = ReactVersion;
@@ -29960,16 +29960,16 @@
     return matchPath(path.pathname, nextPath) != null || matchPath(path.pathname, currentPath) != null;
   }
 
-  // app/javascript/components/HelloWorld.jsx
+  // app/javascript/components/Home.jsx
   var import_react = __toESM(require_react());
-  var HelloWorld_default = () => /* @__PURE__ */ import_react.default.createElement("div", { className: "vw-100 vh-100 primary-color d-flex align-items-center justify-content-center" }, /* @__PURE__ */ import_react.default.createElement("div", { className: "jumbotron jumbotron-fluid bg-transparent" }, /* @__PURE__ */ import_react.default.createElement("div", { className: "container secondary-color" }, /* @__PURE__ */ import_react.default.createElement("h1", { className: "display-4" }, "Hello World"), /* @__PURE__ */ import_react.default.createElement("p", { className: "lead" }, "My first hello world"), /* @__PURE__ */ import_react.default.createElement("hr", { className: "my-4" }), /* @__PURE__ */ import_react.default.createElement(
+  var Home_default = () => /* @__PURE__ */ import_react.default.createElement("div", { className: "vw-100 vh-100 primary-color d-flex align-items-center justify-content-center" }, /* @__PURE__ */ import_react.default.createElement("div", { className: "jumbotron jumbotron-fluid bg-transparent" }, /* @__PURE__ */ import_react.default.createElement("div", { className: "container secondary-color" }, /* @__PURE__ */ import_react.default.createElement("h1", { className: "display-4" }, "Hello!"), /* @__PURE__ */ import_react.default.createElement("p", { className: "lead" }, "Welcome to your statements"), /* @__PURE__ */ import_react.default.createElement("hr", { className: "my-4" }), /* @__PURE__ */ import_react.default.createElement(
     Link,
     {
       to: "/react/statements",
       className: "btn btn-lg custom-button",
       role: "button"
     },
-    "View worlds"
+    "View statements"
   ))));
 
   // app/javascript/components/Statements.jsx
@@ -29989,7 +29989,7 @@
     const tableRows = statements.map((statement, index) => /* @__PURE__ */ import_react2.default.createElement("tr", { key: index }, /* @__PURE__ */ import_react2.default.createElement("td", null, /* @__PURE__ */ import_react2.default.createElement(Link, { to: `/react/statement/${statement.id}` }, " ", statement.id, " ")), /* @__PURE__ */ import_react2.default.createElement("td", null, statement.user_id), /* @__PURE__ */ import_react2.default.createElement("td", null, statement.created_at), /* @__PURE__ */ import_react2.default.createElement("td", null, /* @__PURE__ */ import_react2.default.createElement("span", null, statement.ie_rating)), /* @__PURE__ */ import_react2.default.createElement("td", null, statement.disposable_income_pennies)));
     const allStatementsTable = /* @__PURE__ */ import_react2.default.createElement("div", { className: "page-content page-container", id: "page-content" }, /* @__PURE__ */ import_react2.default.createElement("div", { className: "padding" }, /* @__PURE__ */ import_react2.default.createElement("div", { className: "row d-flex justify-content-center" }, /* @__PURE__ */ import_react2.default.createElement("div", { className: "col-lg grid-margin stretch-card" }, /* @__PURE__ */ import_react2.default.createElement("div", { className: "card" }, /* @__PURE__ */ import_react2.default.createElement("div", { className: "card-body" }, /* @__PURE__ */ import_react2.default.createElement("div", { className: "table-responsive" }, /* @__PURE__ */ import_react2.default.createElement("table", { className: "table table-hover" }, /* @__PURE__ */ import_react2.default.createElement("thead", null, /* @__PURE__ */ import_react2.default.createElement("tr", null, /* @__PURE__ */ import_react2.default.createElement("th", null, "ID"), /* @__PURE__ */ import_react2.default.createElement("th", null, "Created by"), /* @__PURE__ */ import_react2.default.createElement("th", null, "Created at"), /* @__PURE__ */ import_react2.default.createElement("th", null, "I&E rating"), /* @__PURE__ */ import_react2.default.createElement("th", null, "Disposable Income(\xA3)"))), /* @__PURE__ */ import_react2.default.createElement("tbody", null, tableRows)))))))));
     const noStatement = /* @__PURE__ */ import_react2.default.createElement("div", { className: "vw-100 vh-50 d-flex align-items-center justify-content-center" }, /* @__PURE__ */ import_react2.default.createElement("h4", null, "No Statements yet. Why not ", /* @__PURE__ */ import_react2.default.createElement(Link, { to: "#" }, "create one")));
-    return /* @__PURE__ */ import_react2.default.createElement(import_react2.default.Fragment, null, /* @__PURE__ */ import_react2.default.createElement("section", { className: "jumbotron jumbotron-fluid text-center" }, /* @__PURE__ */ import_react2.default.createElement("div", { className: "container py-5" }, /* @__PURE__ */ import_react2.default.createElement("h1", { className: "display-4" }, "Your I&E statements"), /* @__PURE__ */ import_react2.default.createElement("p", { className: "lead text-muted" }, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."))), /* @__PURE__ */ import_react2.default.createElement("div", { className: "py-5" }, /* @__PURE__ */ import_react2.default.createElement("main", { className: "container" }, /* @__PURE__ */ import_react2.default.createElement(Link, { to: "/react", className: "btn btn-link" }, "Home"), /* @__PURE__ */ import_react2.default.createElement("div", { className: "text-end mb-3" }, Boolean(statements.length) && /* @__PURE__ */ import_react2.default.createElement(Link, { to: "/react/statement", className: "btn btn-primary" }, "Create New Statement")), /* @__PURE__ */ import_react2.default.createElement("div", { className: "row" }, statements.length > 0 ? allStatementsTable : noStatement))));
+    return /* @__PURE__ */ import_react2.default.createElement(import_react2.default.Fragment, null, /* @__PURE__ */ import_react2.default.createElement("section", { className: "jumbotron jumbotron-fluid text-center" }, /* @__PURE__ */ import_react2.default.createElement("div", { className: "container py-5" }, /* @__PURE__ */ import_react2.default.createElement("h1", { className: "display-4" }, "Your I&E statements"), /* @__PURE__ */ import_react2.default.createElement("p", { className: "lead text-muted" }, "Here you can check all your statements."))), /* @__PURE__ */ import_react2.default.createElement("div", { className: "py-5" }, /* @__PURE__ */ import_react2.default.createElement("main", { className: "container" }, /* @__PURE__ */ import_react2.default.createElement(Link, { to: "/react", className: "btn btn-link" }, "Home"), /* @__PURE__ */ import_react2.default.createElement("div", { className: "text-end mb-3" }, Boolean(statements.length) && /* @__PURE__ */ import_react2.default.createElement(Link, { to: "/react/statement", className: "btn btn-primary" }, "Create New Statement")), /* @__PURE__ */ import_react2.default.createElement("div", { className: "row" }, statements.length > 0 ? allStatementsTable : noStatement))));
   };
   var Statements_default = Statements;
 
@@ -30036,11 +30036,25 @@
       }
       return /* @__PURE__ */ import_react3.default.createElement("p", null, " No items");
     };
-    return /* @__PURE__ */ import_react3.default.createElement("div", { className: "" }, /* @__PURE__ */ import_react3.default.createElement("div", { className: "container py-5" }, /* @__PURE__ */ import_react3.default.createElement("div", { className: "row" }, /* @__PURE__ */ import_react3.default.createElement("div", { className: "col-sm-12 col-lg-7" }, /* @__PURE__ */ import_react3.default.createElement("ul", { className: "list-group" }, /* @__PURE__ */ import_react3.default.createElement("h5", { className: "mb-2" }, `Id: #${statement.id}`), /* @__PURE__ */ import_react3.default.createElement("h5", { className: "mb-2" }, `disposable_income_pennies: \xA3${statement.disposable_income_pennies}`), /* @__PURE__ */ import_react3.default.createElement("h5", { className: "mb-2" }, `ie_rating: ${statement.ie_rating}`), items())), /* @__PURE__ */ import_react3.default.createElement("div", { className: "col-sm-12 col-lg-2" }, /* @__PURE__ */ import_react3.default.createElement(
+    const bgClass = () => {
+      switch (statement.ie_rating) {
+        case "A":
+          return "bg-success";
+        case "B":
+          return "bg-primary";
+        case "C":
+          return "bg-warning";
+        case "D":
+          return "bg-danger";
+        default:
+          return "bg-secondary";
+      }
+    };
+    return /* @__PURE__ */ import_react3.default.createElement("div", { className: "container mt-5" }, /* @__PURE__ */ import_react3.default.createElement(Link, { to: "/react/statements", className: "btn btn-link" }, "Back to statements"), /* @__PURE__ */ import_react3.default.createElement("div", { className: "text-end mb-3" }, /* @__PURE__ */ import_react3.default.createElement(
       Link,
       {
         type: "button",
-        className: "btn btn-primary",
+        className: "btn btn-primary m-2",
         to: `/react/statement/${statement.id}/edit`
       },
       "Edit"
@@ -30052,7 +30066,7 @@
         onClick: deleteStatement
       },
       "Delete"
-    ))), /* @__PURE__ */ import_react3.default.createElement(Link, { to: "/react/statements", className: "btn btn-link" }, "Back to statements")));
+    )), /* @__PURE__ */ import_react3.default.createElement("div", { className: "row" }, /* @__PURE__ */ import_react3.default.createElement("div", { className: "col-sm-12" }, /* @__PURE__ */ import_react3.default.createElement("dl", { className: "row" }, /* @__PURE__ */ import_react3.default.createElement("dt", { className: "col-sm-3" }, "Statement:"), /* @__PURE__ */ import_react3.default.createElement("dd", { className: "col-sm-9" }, `#${statement.id}`), /* @__PURE__ */ import_react3.default.createElement("dt", { className: "col-sm-3" }, "Disposable Income:"), /* @__PURE__ */ import_react3.default.createElement("dd", { className: "col-sm-9" }, `\xA3${statement.disposable_income_pennies}`), /* @__PURE__ */ import_react3.default.createElement("dt", { className: "col-sm-3" }, "I&E Rating"), /* @__PURE__ */ import_react3.default.createElement("dd", { className: "col-sm-9" }, /* @__PURE__ */ import_react3.default.createElement("span", { className: `badge ${bgClass()}` }, statement.ie_rating))), /* @__PURE__ */ import_react3.default.createElement("ul", { className: "list-group" }, items()))));
   };
   var Statement_default = Statement;
 
@@ -30062,11 +30076,25 @@
   // app/javascript/components/StatementForm.jsx
   var import_react4 = __toESM(require_react());
   var StatementForm = (props) => {
+    textBySection = (section) => {
+      const texts = {
+        "header": {
+          "update": "Updating statement.",
+          "create": "Creating a new statement."
+        },
+        "submit": {
+          "update": "Update",
+          "create": "Create"
+        }
+      };
+      return texts[section][props.action];
+    };
     statementItems = props.items.map((item, index) => /* @__PURE__ */ import_react4.default.createElement("div", { className: "form-row align-items-center", key: index }, /* @__PURE__ */ import_react4.default.createElement("div", { className: "col-auto" }, /* @__PURE__ */ import_react4.default.createElement("label", { className: "sr-only", htmlFor: `statement_item_${index}_name` }, "Name"), /* @__PURE__ */ import_react4.default.createElement(
       "input",
       {
         type: "text",
         name: "name",
+        defaultValue: item.name,
         className: "form-control mb-2",
         id: `statement_item_${index}_name`,
         onChange: (event) => props.onHandleChange(index, event)
@@ -30076,6 +30104,7 @@
       {
         name: "amount_pennies",
         type: "number",
+        defaultValue: item.amount_pennies,
         step: ".01",
         className: "form-control",
         id: `statement_item_${index}_amount_pennies`,
@@ -30088,28 +30117,27 @@
         name: "statement_type",
         className: "form-selec",
         id: `statement_item_${index}_statement_type`,
-        onChange: (event) => props.onHandleChange(index, event)
+        onChange: (event) => props.onHandleChange(index, event),
+        defaultValue: item.statement_type == "income" ? "1" : "0"
       },
       /* @__PURE__ */ import_react4.default.createElement("option", { value: "0" }, "expenditure"),
       /* @__PURE__ */ import_react4.default.createElement("option", { value: "1" }, "income")
     )), /* @__PURE__ */ import_react4.default.createElement("input", { type: "hidden", className: "form-control", id: `statement_item_${index}_id` }), /* @__PURE__ */ import_react4.default.createElement("div", { className: "col-auto" }, /* @__PURE__ */ import_react4.default.createElement("a", { onClick: () => props.onRemoveItem(index), className: "btn btn-danger mb-2" }, "X"))));
-    return /* @__PURE__ */ import_react4.default.createElement("div", { className: "container mt-5" }, /* @__PURE__ */ import_react4.default.createElement("h1", { className: "font-weight-normal mb-5" }, "Add a new statement."), /* @__PURE__ */ import_react4.default.createElement(
+    return /* @__PURE__ */ import_react4.default.createElement("div", { className: "container mt-5" }, /* @__PURE__ */ import_react4.default.createElement("h1", { className: "font-weight-normal mb-5" }, textBySection("header")), /* @__PURE__ */ import_react4.default.createElement(Link, { to: props.backUrl, className: "btn btn-link" }, "Back"), /* @__PURE__ */ import_react4.default.createElement("div", { className: "text-end mb-3" }, /* @__PURE__ */ import_react4.default.createElement(
       "button",
       {
         onClick: props.onAddFormFields,
         className: "btn btn-primary mt-3"
       },
       "Add new statement"
-    ), /* @__PURE__ */ import_react4.default.createElement("form", { onSubmit: props.onSubmit, className: "form-inline" }, /* @__PURE__ */ import_react4.default.createElement("div", { className: "row" }, statementItems), /* @__PURE__ */ import_react4.default.createElement("button", { type: "submit", className: "btn btn-primary mt-3" }, "Create statement")));
+    )), /* @__PURE__ */ import_react4.default.createElement("form", { onSubmit: props.onSubmit, className: "form-inline" }, /* @__PURE__ */ import_react4.default.createElement("div", { className: "row" }, statementItems), /* @__PURE__ */ import_react4.default.createElement("div", { className: "text-end mb-3" }, /* @__PURE__ */ import_react4.default.createElement("button", { type: "submit", className: "btn btn-primary mt-3" }, textBySection("submit")))));
   };
   var StatementForm_default = StatementForm;
 
   // app/javascript/components/NewStatement.jsx
   var NewStatement = () => {
-    const itemAttr = ["name", "amount_pennies", "statement_type", "id", "_destroy"];
     const navigate = useNavigate();
     const [itemFormValues, setItemFormValues] = (0, import_react5.useState)([{ "name": "", "amount_pennies": "", "statement_type": "0", "id": "", "_destroy": "" }]);
-    const [toBeDeleted, setToBeDeleted] = (0, import_react5.useState)([]);
     const emptyFormAttributes = { "name": "", "amount_pennies": "", "statement_type": "0", "id": "", "_destroy": "" };
     const handleChange = (i, e) => {
       let newFormValues = [...itemFormValues];
@@ -30121,16 +30149,13 @@
     };
     const removeFormFields = (i) => {
       let newFormValues = [...itemFormValues];
-      if (newFormValues[i].id) {
-        setToBeDeleted([...toBeDeleted, { id: newFormValues[i].id, _delete: "1" }]);
-      }
       newFormValues.splice(i, 1);
       setItemFormValues(newFormValues);
     };
     const onSubmit = (event) => {
       const body = {
         statement: {
-          items: [...itemFormValues, ...toBeDeleted]
+          items: [...itemFormValues]
         }
       };
       event.preventDefault();
@@ -30157,7 +30182,9 @@
         onAddFormFields: addFormFields,
         onHandleChange: handleChange,
         onSubmit,
-        onRemoveItem: removeFormFields
+        onRemoveItem: removeFormFields,
+        action: "create",
+        backUrl: "/react/statements/"
       }
     );
   };
@@ -30166,7 +30193,6 @@
   // app/javascript/components/EditStatement.jsx
   var import_react6 = __toESM(require_react());
   var EditStatement = () => {
-    const itemAttr = ["name", "amount_pennies", "statement_type", "id", "_destroy"];
     const navigate = useNavigate();
     const params = useParams();
     const [itemFormValues, setItemFormValues] = (0, import_react6.useState)([]);
@@ -30179,9 +30205,7 @@
           return res.json();
         }
         throw new Error("Network response was not ok.");
-      }).then((res) => {
-        return setItemFormValues(res.statement_items);
-      }).catch(() => navigate("/react"));
+      }).then((res) => setItemFormValues(res.statement_items)).catch(() => navigate(`/react/statement/${params.id}`));
     }, []);
     const handleChange = (i, e) => {
       let newFormValues = [...itemFormValues];
@@ -30193,9 +30217,8 @@
     };
     const removeFormFields = (i) => {
       let newFormValues = [...itemFormValues];
-      debugger;
       if (newFormValues[i].id) {
-        setToBeDeleted([...toBeDeleted, { id: newFormValues[i].id, _delete: "1" }]);
+        setToBeDeleted([...toBeDeleted, { ...newFormValues[i], _destroy: "1" }]);
       }
       newFormValues.splice(i, 1);
       setItemFormValues(newFormValues);
@@ -30207,11 +30230,10 @@
         }
       };
       event.preventDefault();
-      const url = "/api/v1/statements/create";
+      const url = `/api/v1/statements/${params.id}`;
       const token = document.querySelector('meta[name="csrf-token"]').content;
-      debugger;
       fetch(url, {
-        method: "POST",
+        method: "PUT",
         headers: {
           "X-CSRF-Token": token,
           "Content-Type": "application/json"
@@ -30224,53 +30246,23 @@
         throw new Error("Network response was not ok.");
       }).then((response) => navigate(`/react/statement/${response.id}`)).catch((error) => console.log(error.message));
     };
-    statementItems = itemFormValues.map((item, index) => /* @__PURE__ */ import_react6.default.createElement("div", { className: "form-row align-items-center", key: index }, /* @__PURE__ */ import_react6.default.createElement("div", { className: "col-auto" }, /* @__PURE__ */ import_react6.default.createElement("label", { className: "sr-only", htmlFor: `statement_item_${index}_name` }, "Name"), /* @__PURE__ */ import_react6.default.createElement(
-      "input",
+    return /* @__PURE__ */ import_react6.default.createElement(
+      StatementForm_default,
       {
-        type: "text",
-        name: "name",
-        defaultValue: item.name,
-        className: "form-control mb-2",
-        id: `statement_item_${index}_name`,
-        onChange: (event) => handleChange(index, event)
+        items: itemFormValues,
+        onAddFormFields: addFormFields,
+        onHandleChange: handleChange,
+        onSubmit,
+        onRemoveItem: removeFormFields,
+        action: "update",
+        backUrl: `/react/statement/${params.id}`
       }
-    )), /* @__PURE__ */ import_react6.default.createElement("div", { className: "col-auto" }, /* @__PURE__ */ import_react6.default.createElement("label", { className: "sr-only", htmlFor: `statement_item_${index}_amount_pennies` }, "Amount"), /* @__PURE__ */ import_react6.default.createElement(
-      "input",
-      {
-        name: "amount_pennies",
-        defaultValue: item.amount_pennies,
-        type: "number",
-        step: ".01",
-        className: "form-control",
-        id: `statement_item_${index}_amount_pennies`,
-        placeholder: "Amount",
-        onChange: (event) => handleChange(index, event)
-      }
-    )), /* @__PURE__ */ import_react6.default.createElement("div", { className: "col-auto" }, /* @__PURE__ */ import_react6.default.createElement("label", { className: "sr-only", htmlFor: `statement_item_${index}_statement_type` }, "Type"), /* @__PURE__ */ import_react6.default.createElement(
-      "select",
-      {
-        name: "statement_type",
-        className: "form-selec",
-        defaultValue: item.statement_type == "expenditure" ? "0" : "1",
-        id: `statement_item_${index}_statement_type`,
-        onChange: (event) => handleChange(index, event)
-      },
-      /* @__PURE__ */ import_react6.default.createElement("option", { value: "0" }, "expenditure"),
-      /* @__PURE__ */ import_react6.default.createElement("option", { value: "1" }, "income")
-    )), /* @__PURE__ */ import_react6.default.createElement("input", { type: "hidden", className: "form-control", id: `statement_item_${index}_id` }), /* @__PURE__ */ import_react6.default.createElement("div", { className: "col-auto" }, /* @__PURE__ */ import_react6.default.createElement("a", { onClick: () => removeFormFields(index), className: "btn btn-danger mb-2" }, "X"))));
-    return /* @__PURE__ */ import_react6.default.createElement("div", { className: "container mt-5" }, /* @__PURE__ */ import_react6.default.createElement("h1", { className: "font-weight-normal mb-5" }, "Add a new statement."), /* @__PURE__ */ import_react6.default.createElement(
-      "button",
-      {
-        onClick: addFormFields,
-        className: "btn btn-primary mt-3"
-      },
-      "Add new statement"
-    ), /* @__PURE__ */ import_react6.default.createElement("form", { onSubmit, className: "form-inline" }, /* @__PURE__ */ import_react6.default.createElement("div", { className: "row" }, statementItems), /* @__PURE__ */ import_react6.default.createElement("button", { type: "submit", className: "btn btn-primary mt-3" }, "Create statement")));
+    );
   };
   var EditStatement_default = EditStatement;
 
   // app/javascript/routes/index.jsx
-  var routes_default = /* @__PURE__ */ React9.createElement(BrowserRouter, null, /* @__PURE__ */ React9.createElement(Routes, null, /* @__PURE__ */ React9.createElement(Route, { path: "/react", element: /* @__PURE__ */ React9.createElement(HelloWorld_default, null) }), /* @__PURE__ */ React9.createElement(Route, { path: "/react/statements", element: /* @__PURE__ */ React9.createElement(Statements_default, null) }), /* @__PURE__ */ React9.createElement(Route, { path: "/react/statement/:id", element: /* @__PURE__ */ React9.createElement(Statement_default, null) }), /* @__PURE__ */ React9.createElement(Route, { path: "/react/statement", element: /* @__PURE__ */ React9.createElement(NewStatement_default, null) }), /* @__PURE__ */ React9.createElement(Route, { path: "/react/statement/:id/edit", element: /* @__PURE__ */ React9.createElement(EditStatement_default, null) })));
+  var routes_default = /* @__PURE__ */ React9.createElement(BrowserRouter, null, /* @__PURE__ */ React9.createElement(Routes, null, /* @__PURE__ */ React9.createElement(Route, { path: "/react", element: /* @__PURE__ */ React9.createElement(Home_default, null) }), /* @__PURE__ */ React9.createElement(Route, { path: "/react/statements", element: /* @__PURE__ */ React9.createElement(Statements_default, null) }), /* @__PURE__ */ React9.createElement(Route, { path: "/react/statement/:id", element: /* @__PURE__ */ React9.createElement(Statement_default, null) }), /* @__PURE__ */ React9.createElement(Route, { path: "/react/statement", element: /* @__PURE__ */ React9.createElement(NewStatement_default, null) }), /* @__PURE__ */ React9.createElement(Route, { path: "/react/statement/:id/edit", element: /* @__PURE__ */ React9.createElement(EditStatement_default, null) })));
 
   // app/javascript/components/App.jsx
   var App_default = (props) => /* @__PURE__ */ import_react7.default.createElement(import_react7.default.Fragment, null, routes_default);

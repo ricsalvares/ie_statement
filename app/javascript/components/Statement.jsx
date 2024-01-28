@@ -73,42 +73,62 @@ const Statement = () => {
     return (<p> No items</p>)
   }
 
-  return (
-    <div className="">
-      
-      <div className="container py-5">
-        <div className="row">
-          <div className="col-sm-12 col-lg-7">
-            <ul className="list-group">
-            <h5 className="mb-2">{`Id: #${statement.id}`}</h5>
-            <h5 className="mb-2">{`disposable_income_pennies: £${statement.disposable_income_pennies}`}</h5>
-            <h5 className="mb-2">{`ie_rating: ${statement.ie_rating}`}</h5>
-              {items()}
-            </ul>
-          </div>
-          <div className="col-sm-12 col-lg-2">
-            <Link
-              type="button"
-              className="btn btn-primary"
-              to={`/react/statement/${statement.id}/edit`}
-            >
-              Edit
-            </Link>
+  const bgClass = () => {
+    switch(statement.ie_rating) {
+      case "A":
+        return 'bg-success'
+      case "B":
+        return 'bg-primary'
+      case "C":
+        return 'bg-warning'
+      case "D":
+        return 'bg-danger'
+      default:
+        return 'bg-secondary'
+    }
+  }
 
-            <button
-              type="button"
-              className="btn btn-danger"
-              onClick={deleteStatement}
-            >
-              Delete
-            </button>
-          </div>
-        </div>
+  return (
+      
+      <div className="container mt-5">
         <Link to="/react/statements" className="btn btn-link">
           Back to statements
         </Link>
+        <div className="text-end mb-3">
+          <Link
+            type="button"
+            className="btn btn-primary m-2"
+            to={`/react/statement/${statement.id}/edit`}
+          >Edit
+          </Link>
+
+          <button
+            type="button"
+            className="btn btn-danger"
+            onClick={deleteStatement}
+          >
+            Delete
+          </button>
+        </div>
+        <div className="row">
+          <div className="col-sm-12">
+            <dl className="row">
+              <dt className="col-sm-3">Statement:</dt>
+              <dd className="col-sm-9">{`#${statement.id}`}</dd>
+              <dt className="col-sm-3">Disposable Income:</dt>
+              <dd className="col-sm-9">{`£${statement.disposable_income_pennies}`}</dd>
+
+              <dt className="col-sm-3">I&E Rating</dt>
+              <dd className="col-sm-9">
+                <span className={`badge ${bgClass()}`}>{statement.ie_rating}</span>
+              </dd>
+            </dl>
+            <ul className="list-group">
+              {items()}
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
   );
 };
 

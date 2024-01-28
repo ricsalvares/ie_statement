@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import StatementForm from "./StatementForm";
 
 const NewStatement = () => {
-  const itemAttr = ["name", "amount_pennies", "statement_type", "id", "_destroy"]
   const navigate = useNavigate();
 
   const [itemFormValues, setItemFormValues] = useState([{"name": "","amount_pennies": "","statement_type": "0","id": "","_destroy": "" }])
-  const [toBeDeleted, setToBeDeleted] = useState([])
   const emptyFormAttributes = { "name": "","amount_pennies": "","statement_type": "0","id": "", "_destroy": "" }
 
   const handleChange = (i, e) => {
@@ -22,9 +20,6 @@ const NewStatement = () => {
 
   const removeFormFields = (i) => {
     let newFormValues = [...itemFormValues];
-    if (newFormValues[i].id) {
-      setToBeDeleted([...toBeDeleted, { id: newFormValues[i].id, _delete: '1' }])
-    }
     newFormValues.splice(i, 1);
     setItemFormValues(newFormValues)
   }
@@ -32,9 +27,10 @@ const NewStatement = () => {
   const onSubmit = (event) => {
     const body = {
       statement: { 
-        items: [...itemFormValues, ...toBeDeleted]
+        items: [...itemFormValues]
       }
     }
+    
     event.preventDefault();
     const url = "/api/v1/statements/create";
     const token = document.querySelector('meta[name="csrf-token"]').content;
@@ -56,55 +52,6 @@ const NewStatement = () => {
       .catch((error) => console.log(error.message));
   };
 
-  // statementItems = itemFormValues.map((item, index) => (
-  //   <div className="form-row align-items-center" key={index}>
-  //     <div className="col-auto">
-  //       <label className="sr-only" htmlFor={`statement_item_${index}_name`}>Name</label>
-  //       <input
-  //         type="text" 
-  //         name="name"
-  //         className="form-control mb-2"
-  //         id={`statement_item_${index}_name`}
-  //         onChange={(event)=> handleChange(index, event)}
-  //         />
-  //     </div>
-
-  //     <div className="col-auto">
-  //       <label className="sr-only" htmlFor={`statement_item_${index}_amount_pennies`}>Amount</label>
-  //         <input 
-  //           name="amount_pennies"
-  //           type="number"
-  //           step=".01"
-  //           className="form-control"
-  //           id={`statement_item_${index}_amount_pennies`}
-  //           placeholder="Amount"
-  //           onChange={(event)=> handleChange(index, event)}
-  //         />
-  //     </div>
-
-  //     <div className="col-auto">
-  //       <label className="sr-only" htmlFor={`statement_item_${index}_statement_type`}>Type</label>
-  //       <select 
-  //         name="statement_type"
-  //         className="form-selec"
-  //         id={`statement_item_${index}_statement_type`}
-  //         onChange={(event)=> handleChange(index, event)}
-  //         >
-          
-  //         <option value="0">expenditure</option>
-  //         <option value="1">income</option>
-  //       </select>
-  //     </div>
-
-  //     <input type="hidden" className="form-control" id={`statement_item_${index}_id`} />
-
-  //     <div className="col-auto">
-  //       <a onClick={() => removeFormFields(index)} className="btn btn-danger mb-2">X</a>
-  //     </div>
-
-  //   </div>
-  // ))
-
   return (
     <StatementForm 
       items={itemFormValues}
@@ -112,6 +59,8 @@ const NewStatement = () => {
       onHandleChange={handleChange}
       onSubmit={onSubmit}
       onRemoveItem={removeFormFields}
+      action={"create"}
+      backUrl="/react/statements/"
     />
   );
 }

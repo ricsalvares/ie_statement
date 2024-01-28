@@ -1,2 +1,8 @@
-module Api::V1::StatementsHelper
+# frozen_string_literal: true
+
+module Api
+  module V1
+    module StatementsHelper
+    end
+  end
 end

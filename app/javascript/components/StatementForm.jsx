@@ -1,12 +1,22 @@
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
-
+import React from "react";
+import { Link } from "react-router-dom";
 const StatementForm = (props) => {
-  // items={itemFormValues}
-  // onAddFormFields={addFormFields}
-  // onHandleChange={handleChange}
-  // onSubmit={onSubmit}
-  // onRemoveItem={removeFormFields}
+
+  textBySection = (section) => {
+    const texts = {
+      "header": { 
+        "update": "Updating statement.", 
+        "create": "Creating a new statement."
+      },
+      "submit": { 
+        "update": "Update", 
+        "create": "Create"
+      }
+    }
+
+
+    return texts[section][props.action]
+  }
 
   statementItems = props.items.map((item, index) => (
     <div className="form-row align-items-center" key={index}>
@@ -15,6 +25,7 @@ const StatementForm = (props) => {
         <input
           type="text" 
           name="name"
+          defaultValue={item.name}
           className="form-control mb-2"
           id={`statement_item_${index}_name`}
           onChange={(event)=> props.onHandleChange(index, event)}
@@ -26,6 +37,7 @@ const StatementForm = (props) => {
           <input 
             name="amount_pennies"
             type="number"
+            defaultValue={item.amount_pennies}
             step=".01"
             className="form-control"
             id={`statement_item_${index}_amount_pennies`}
@@ -40,8 +52,8 @@ const StatementForm = (props) => {
           name="statement_type"
           className="form-selec"
           id={`statement_item_${index}_statement_type`}
-          onChange={(event)=> props.onHandleChange(index, event)}>
-          
+          onChange={(event)=> props.onHandleChange(index, event)}
+          defaultValue={item.statement_type == 'income' ? '1' : '0' }>
           <option value="0">expenditure</option>
           <option value="1">income</option>
         </select>
@@ -59,20 +71,25 @@ const StatementForm = (props) => {
   return (
     <div className="container mt-5">
       <h1 className="font-weight-normal mb-5">
-        Add a new statement.
+        {textBySection('header')} 
       </h1>
+      <Link to={props.backUrl} className="btn btn-link">Back</Link>
+      <div className="text-end mb-3">
         <button 
-        onClick={props.onAddFormFields}
-        className="btn btn-primary mt-3">
+          onClick={props.onAddFormFields}
+          className="btn btn-primary mt-3">
           Add new statement
         </button>
+      </div>
       <form onSubmit={props.onSubmit} className="form-inline">
         <div className="row">
           { statementItems }
         </div>
-        <button type="submit" className="btn btn-primary mt-3">
-          Create statement
-        </button>
+        <div className="text-end mb-3">
+          <button type="submit" className="btn btn-primary mt-3">
+            {textBySection("submit")}
+          </button>
+        </div>
       </form>
     </div>
 

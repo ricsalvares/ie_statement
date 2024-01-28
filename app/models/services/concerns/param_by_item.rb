@@ -4,6 +4,7 @@ module Services
   module Concerns
     module ParamByItem
       def param_by_item(item)
+        item = item.with_indifferent_access if item.respond_to? :with_indifferent_access
         {
           name: item[:name],
           statement_type: item[:statement_type].to_i,
